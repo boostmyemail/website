@@ -1,0 +1,537 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Work With Me — Boost My Email"
+  description="Senior lifecycle email execution for B2B SaaS and PLG companies. $7,000/month, month-to-month. No long-term commitment."
+>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Fractional Lifecycle Email</span>
+      <h1>Senior email execution.<br />Without the full-time hire.</h1>
+      <p class="subhead">
+        $7,000/month. Month-to-month. No ramp time, no benefits overhead, no 12-month commitment —
+        just someone senior who actually does the work.
+      </p>
+      <a href="https://calendly.com/boostmyemail" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        Book a discovery call
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== WHO THIS IS FOR ===== -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Who this is for</span>
+      <h2>You probably recognize yourself here.</h2>
+      <div class="qualifier-grid">
+        {[
+          { icon: "→", text: "Series A–C B2B SaaS or PLG company with a real product and real users" },
+          { icon: "→", text: "Running HubSpot or Customer.io — or actively moving to one of them" },
+          { icon: "→", text: "You have a marketing leader, but no one dedicated to lifecycle email" },
+          { icon: "→", text: "Email is on the roadmap but keeps getting deprioritized — execution has fallen behind" },
+          { icon: "→", text: "You want someone who can operate independently, not someone who needs hand-holding" },
+          { icon: "→", text: "You care about pipeline and retention metrics, not just open rates" },
+        ].map(item => (
+          <div class="qualifier-item">
+            <span class="qualifier-arrow" aria-hidden="true">{item.icon}</span>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT I ACTUALLY DO ===== -->
+  <section class="section section-tinted">
+    <div class="container">
+      <span class="eyebrow">Scope of work</span>
+      <h2>What's actually included.</h2>
+      <p class="section-intro">
+        The risk with fractional anything is vagueness. Here's exactly what you get.
+      </p>
+      <div class="scope-grid">
+        <div class="scope-col">
+          <h3 class="scope-col-heading">Included</h3>
+          <ul class="scope-list included">
+            {[
+              "Campaign planning and calendar management",
+              "Segmentation strategy and list hygiene",
+              "Email copywriting — from subject line to CTA",
+              "HTML production in HubSpot or Customer.io",
+              "Deliverability monitoring and diagnosis (Google Postmaster, sender rep)",
+              "Lifecycle sequence architecture — activation, onboarding, re-engagement, nurture",
+              "Performance reporting tied to business metrics, not just send metrics",
+              "Playbook documentation so the work outlives the engagement",
+            ].map(item => (
+              <li>
+                <span class="check" aria-hidden="true">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="scope-col">
+          <h3 class="scope-col-heading">Not included</h3>
+          <ul class="scope-list excluded">
+            {[
+              "Paid media or ad creative",
+              "Full-stack marketing strategy (beyond lifecycle)",
+              "CRM setup from scratch (light configuration is fine)",
+              "Content marketing or SEO",
+            ].map(item => (
+              <li>
+                <span class="ex" aria-hidden="true">✕</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">The process</span>
+      <h2>How an engagement starts.</h2>
+      <div class="steps">
+        {[
+          { n: "01", heading: "Book a 30-minute discovery call", body: "We talk through where your lifecycle program stands, what's working, and what's not. No pitch deck — just a real conversation." },
+          { n: "02", heading: "Scope month one together", body: "If it's a fit, we agree on the highest-leverage starting point. Month one is usually an audit plus the first sequence or campaign." },
+          { n: "03", heading: "Kick off within a week", body: "Onboarding is lightweight. You add me to your tools, share context, and we get to work. No six-week discovery phase." },
+          { n: "04", heading: "Month-to-month from there", body: "Renews monthly. Cancel or pause any time. No long-term contract, no penalty, no awkwardness." },
+        ].map(step => (
+          <div class="step">
+            <span class="step-num">{step.n}</span>
+            <div class="step-body">
+              <h3>{step.heading}</h3>
+              <p>{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING FRAMING ===== -->
+  <section class="section section-tinted">
+    <div class="container container-narrow">
+      <span class="eyebrow">The investment</span>
+      <h2>$7,000/month. Here's what that actually means.</h2>
+      <div class="compare-grid">
+        <div class="compare-card compare-card--accent">
+          <div class="compare-label">Boost My Email</div>
+          <div class="compare-price">$7K<span>/mo</span></div>
+          <ul class="compare-list">
+            <li>Senior execution, day one</li>
+            <li>No benefits, no payroll overhead</li>
+            <li>No 12-month commitment</li>
+            <li>Single point of contact who does the work</li>
+            <li>Cancel any time</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <div class="compare-label">Full-time hire</div>
+          <div class="compare-price">$90–120K<span>/yr</span></div>
+          <ul class="compare-list muted">
+            <li>3–4 month ramp time</li>
+            <li>Benefits, payroll taxes, overhead</li>
+            <li>Long hiring process</li>
+            <li>Hard to exit if it's not working</li>
+            <li>Mid-level experience at this budget</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <div class="compare-label">Marketing agency</div>
+          <div class="compare-price">$10–15K<span>/mo</span></div>
+          <ul class="compare-list muted">
+            <li>Account manager layer between you and the work</li>
+            <li>Constant context-switching across clients</li>
+            <li>Junior talent doing senior work</li>
+            <li>You pay for overhead, not output</li>
+            <li>Usually locked into a contract</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOCIAL PROOF ===== -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">What clients say</span>
+      <h2>Senior operators trust the work.</h2>
+      <div class="testimonials">
+        {[
+          {
+            quote: "He can create and execute lifecycle marketing plans flawlessly, but also bring critique and feedback needed to make something better.",
+            name: "Joe Martin",
+            title: "SVP of Marketing",
+            company: "Scorpion",
+          },
+          {
+            quote: "His expertise is evident in his ability to develop scalable programs that not only engage audiences but also revitalize existing content.",
+            name: "Jessica Hollander Torres",
+            title: "Global CMO",
+            company: "Airwater Co.",
+          },
+        ].map(t => (
+          <figure class="testimonial-card">
+            <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
+            <figcaption>
+              <span class="t-name">{t.name}</span>
+              <span class="t-role">{t.title} · {t.company}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING CTA ===== -->
+  <section class="section-cta">
+    <div class="container container-narrow" style="text-align:center">
+      <h2>If your lifecycle email program needs someone to actually run it — let's talk.</h2>
+      <p class="cta-sub">
+        A 30-minute call is enough to know if it's a fit. No obligation, no sales pressure.
+      </p>
+      <a href="https://calendly.com/boostmyemail" target="_blank" rel="noopener noreferrer" class="btn-primary btn-large">
+        Book a discovery call
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Shared ── */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .container-narrow {
+    max-width: 860px;
+  }
+  .eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+  .section-intro {
+    font-size: 17px;
+    color: rgba(255,255,255,0.60);
+    max-width: 600px;
+    margin-bottom: 40px;
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--r-pill);
+    padding: 12px 28px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background .15s ease, transform .1s ease;
+  }
+  .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+  .btn-primary:active { transform: translateY(1px); }
+  .btn-large { padding: 16px 36px; font-size: 16px; }
+
+  /* ── Sections ── */
+  .hero {
+    padding: 104px 32px 96px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .hero h1 {
+    font-size: clamp(36px, 4.6vw, 58px);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    max-width: 720px;
+    margin-bottom: 24px;
+    text-wrap: balance;
+  }
+  .subhead {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    text-wrap: pretty;
+  }
+
+  .section {
+    padding: 88px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .section-tinted {
+    background: rgba(255,255,255,0.025);
+  }
+  .section-cta {
+    padding: 96px 32px;
+  }
+  .cta-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.60);
+    margin-bottom: 36px;
+    margin-top: 12px;
+  }
+
+  /* ── Who this is for ── */
+  .qualifier-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 36px;
+  }
+  .qualifier-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .qualifier-arrow {
+    color: var(--accent);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-weight: 500;
+  }
+  .qualifier-item p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* ── Scope ── */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 8px;
+  }
+  .scope-col-heading {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+    font-family: var(--font-body);
+  }
+  .scope-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .scope-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.75);
+  }
+  .check {
+    color: var(--accent);
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .ex {
+    color: rgba(255,255,255,0.25);
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .scope-list.excluded li {
+    color: rgba(255,255,255,0.40);
+  }
+
+  /* ── How it works ── */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 40px;
+  }
+  .step {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .step:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+  .step-num {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    width: 28px;
+    padding-top: 3px;
+  }
+  .step-body h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+  .step-body p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.60);
+    line-height: 1.6;
+    max-width: 600px;
+  }
+
+  /* ── Pricing comparison ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .compare-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .compare-card--accent {
+    background: rgba(161,1,0,0.12);
+    border-color: rgba(161,1,0,0.40);
+  }
+  .compare-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 12px;
+  }
+  .compare-card--accent .compare-label {
+    color: rgba(255,255,255,0.65);
+  }
+  .compare-price {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    line-height: 1;
+  }
+  .compare-price span {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .compare-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .compare-list li {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.45;
+    padding-left: 16px;
+    position: relative;
+  }
+  .compare-list li::before {
+    content: "·";
+    position: absolute;
+    left: 4px;
+    color: var(--accent);
+  }
+  .compare-list.muted li { color: rgba(255,255,255,0.45); }
+  .compare-list.muted li::before { color: rgba(255,255,255,0.20); }
+
+  /* ── Testimonials ── */
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 36px;
+  }
+  .testimonial-card {
+    background: rgba(161,1,0,0.12);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 28px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  blockquote {
+    font-style: italic;
+    color: rgba(255,255,255,0.82);
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0 0 22px 0;
+    flex: 1;
+    text-wrap: pretty;
+  }
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .t-name {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .t-role {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 760px) {
+    .qualifier-grid,
+    .scope-grid,
+    .compare-grid,
+    .testimonials {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

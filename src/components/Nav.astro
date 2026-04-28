@@ -1,15 +1,20 @@
 ---
-const links = ["Work With Me", "Products", "Blog", "About"];
+const links = [
+  { label: "Work With Me", href: `${import.meta.env.BASE_URL}work-with-me/` },
+  { label: "Products",     href: "#" },
+  { label: "Blog",         href: "#" },
+  { label: "About",        href: "#" },
+];
 ---
 
 <nav>
   <div class="inner">
-    <a href="/" class="logo-link">
+    <a href={import.meta.env.BASE_URL} class="logo-link">
       <img src={`${import.meta.env.BASE_URL}assets/boostmyemail-logo.png`} alt="Boost My Email" height="42" />
     </a>
     <div class="right">
       <div class="nav-links">
-        {links.map(l => <a href="#" class="nav-link">{l}</a>)}
+        {links.map(l => <a href={l.href} class="nav-link">{l.label}</a>)}
       </div>
       <a href="https://calendly.com/boostmyemail" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a call</a>
     </div>

@@ -1,32 +1,16 @@
 ---
-import Nav from '../components/Nav.astro';
+import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import CredibilityBar from '../components/CredibilityBar.astro';
 import FeaturedProducts from '../components/FeaturedProducts.astro';
 import Testimonials from '../components/Testimonials.astro';
 import EmailOptin from '../components/EmailOptin.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}assets/boostmyemail-logo.png`} />
-    <title>Boost My Email — Lifecycle email for B2B SaaS</title>
-    <meta name="description" content="Fractional lifecycle marketing for Series A–C SaaS — strategy, execution, and the playbooks to make it repeatable." />
-  </head>
-  <body>
-    <Nav />
-    <main>
-      <Hero />
-      <CredibilityBar />
-      <FeaturedProducts />
-      <Testimonials />
-      <EmailOptin />
-    </main>
-    <Footer />
-  </body>
-</html>
+<Layout title="Boost My Email — Lifecycle email for B2B SaaS">
+  <Hero />
+  <CredibilityBar />
+  <FeaturedProducts />
+  <Testimonials />
+  <EmailOptin />
+</Layout>
