@@ -1,0 +1,96 @@
+---
+const links = ["Work With Me", "Products", "Blog", "About"];
+---
+
+<nav>
+  <div class="inner">
+    <a href="/" class="logo-link">
+      <img src="/assets/boostmyemail-logo.png" alt="Boost My Email" height="28" />
+    </a>
+    <div class="right">
+      <div class="nav-links">
+        {links.map(l => <a href="#" class="nav-link">{l}</a>)}
+      </div>
+      <a href="#" class="btn-primary">Book a call</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+  nav {
+    height: var(--nav-height);
+    background: rgba(21,20,28,0.85);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-link:hover {
+    opacity: 0.85;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    color: rgba(255,255,255,0.60);
+    letter-spacing: -0.005em;
+    transition: color .15s ease;
+  }
+
+  .nav-link:hover {
+    color: #fff;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--r-pill);
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background .15s ease, transform .1s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: #fff;
+  }
+
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+</style>

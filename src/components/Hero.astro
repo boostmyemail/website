@@ -1,0 +1,170 @@
+---
+---
+
+<section class="hero">
+  <div class="inner hero-grid">
+    <div class="copy">
+      <span class="eyebrow">Fractional · Lifecycle email · B2B SaaS</span>
+      <h1>
+        The lifecycle email system for B2B SaaS teams that can't afford to figure it out
+        <span class="accent">twice.</span>
+      </h1>
+      <p class="subhead">
+        Fractional lifecycle marketing for Series A–C SaaS — strategy, execution, and the playbooks to make it repeatable.
+      </p>
+      <div class="ctas">
+        <a href="#" class="btn-primary">Book a call</a>
+        <a href="#" class="btn-outline">Browse products</a>
+      </div>
+    </div>
+
+    <div class="portrait-wrap">
+      <div class="portrait-glow" aria-hidden="true"></div>
+      <img
+        src="/assets/michael-roberts.png"
+        alt="Michael Roberts, founder of Boost My Email"
+        class="portrait-img"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: 104px 32px 96px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: clamp(36px, 4.6vw, 60px);
+    max-width: 760px;
+    margin-bottom: 28px;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  .accent {
+    color: var(--accent);
+  }
+
+  .subhead {
+    font-size: 19px;
+    color: rgba(255,255,255,0.65);
+    max-width: 620px;
+    margin-bottom: 40px;
+    line-height: 1.55;
+    text-wrap: pretty;
+  }
+
+  .ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-pill);
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: #fff;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.30);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    border-color: rgba(255,255,255,0.45);
+  }
+
+  .btn-primary:active,
+  .btn-outline:active {
+    transform: translateY(1px);
+  }
+
+  .portrait-wrap {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    flex-shrink: 0;
+  }
+
+  .portrait-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: radial-gradient(circle at 50% 50%, rgba(161,1,0,0.35) 0%, rgba(161,1,0,0.12) 55%, rgba(161,1,0,0) 72%);
+    filter: blur(8px);
+    transform: scale(1.15);
+  }
+
+  .portrait-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  @media (max-width: 880px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .portrait-wrap {
+      width: 240px;
+      height: 240px;
+      margin: 0 auto;
+    }
+  }
+</style>

@@ -1,0 +1,129 @@
+---
+const testimonials = [
+  {
+    quote: "Michael is my absolute go-to for all things email marketing. He has the answers and experience for any industry.",
+    name: "Connor Minogue",
+    title: "CEO",
+    company: "Minogue Management Group",
+  },
+  {
+    quote: "His expertise is evident in his ability to develop scalable programs that not only engage audiences but also revitalize existing content.",
+    name: "Jessica Hollander Torres",
+    title: "Global CMO",
+    company: "Airwater Co.",
+  },
+  {
+    quote: "He can create and execute lifecycle marketing plans flawlessly, but also bring critique and feedback needed to make something better.",
+    name: "Joe Martin",
+    title: "SVP of Marketing",
+    company: "Scorpion",
+  },
+];
+---
+
+<section class="testimonials">
+  <div class="inner">
+    <div class="header">
+      <span class="eyebrow">What clients say</span>
+      <h2>Senior operators trust the work.</h2>
+    </div>
+    <div class="grid">
+      {testimonials.map(t => (
+        <figure class="card">
+          <blockquote>
+            &ldquo;{t.quote}&rdquo;
+          </blockquote>
+          <figcaption>
+            <span class="name">{t.name}</span>
+            <span class="role">{t.title} · {t.company}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials {
+    padding: 0 32px 96px;
+  }
+
+  .inner {
+    max-width: var(--width-page);
+    margin: 0 auto;
+  }
+
+  .header {
+    margin-bottom: 36px;
+  }
+
+  .eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-size: clamp(28px, 3vw, 36px);
+    letter-spacing: -0.01em;
+    max-width: 620px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    background: rgba(161,1,0,0.12);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 26px 26px 24px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  blockquote {
+    font-style: italic;
+    color: rgba(255,255,255,0.82);
+    font-size: 15px;
+    line-height: 1.65;
+    margin: 0 0 22px 0;
+    flex: 1;
+    text-wrap: pretty;
+  }
+
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .name {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
+  .role {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 760px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,120 @@
+---
+---
+
+<section class="email-optin">
+  <div class="inner">
+    <span class="eyebrow">Free · Weekly</span>
+    <h2>Get the Lifecycle Email Playbook.</h2>
+    <p class="subtext">
+      One tactic per week. Real numbers from real B2B SaaS programs. Unsubscribe any time.
+    </p>
+    <form class="optin-form" name="newsletter" method="POST" data-netlify="true">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="you@company.com"
+        class="email-input"
+      />
+      <button type="submit" class="btn-primary">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .email-optin {
+    background: rgba(161,1,0,0.12);
+    border-top: 1px solid rgba(161,1,0,0.30);
+    border-bottom: 1px solid rgba(161,1,0,0.30);
+    padding: 96px 32px;
+  }
+
+  .inner {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: clamp(28px, 3vw, 38px);
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin-bottom: 16px;
+  }
+
+  .subtext {
+    color: rgba(255,255,255,0.70);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 520px;
+    margin: 0 auto 32px;
+    text-wrap: pretty;
+  }
+
+  .optin-form {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .email-input {
+    flex: 1 1 280px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: var(--r-pill);
+    padding: 12px 20px;
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 14px;
+    outline: none;
+    transition: border-color .15s ease;
+    min-width: 0;
+  }
+
+  .email-input::placeholder {
+    color: rgba(255,255,255,0.35);
+  }
+
+  .email-input:focus {
+    border-color: rgba(255,255,255,0.45);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--r-pill);
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background .15s ease, transform .1s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+  }
+
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+</style>

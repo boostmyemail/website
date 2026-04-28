@@ -1,0 +1,50 @@
+---
+const items = [
+  "HubSpot Solutions Partner",
+  "Customer.io Agency Partner",
+  "10+ Years Experience",
+];
+---
+
+<div class="credibility-bar">
+  <div class="inner">
+    {items.map((item, i) => (
+      <>
+        <span class="item">{item}</span>
+        {i < items.length - 1 && <span class="dot" aria-hidden="true">·</span>}
+      </>
+    ))}
+  </div>
+</div>
+
+<style>
+  .credibility-bar {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 22px 32px;
+  }
+
+  .inner {
+    max-width: var(--width-page);
+    margin: 0 auto;
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(255,255,255,0.50);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .dot {
+    color: rgba(255,255,255,0.20);
+  }
+</style>

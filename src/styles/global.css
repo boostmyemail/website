@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --bg:                  #15141C;
+  --bg-elevated:         #1B1A23;
+
+  --accent:              #A10100;
+  --accent-hover:        #C41D1C;
+  --accent-tint:         rgba(161, 1, 0, 0.12);
+
+  --fg1:                 #FFFFFF;
+  --fg2:                 rgba(255,255,255,0.60);
+  --fg3:                 rgba(255,255,255,0.35);
+
+  --surface-1:           rgba(255,255,255,0.06);
+  --surface-2:           rgba(255,255,255,0.09);
+  --surface-3:           rgba(255,255,255,0.10);
+
+  --border-subtle:       rgba(255,255,255,0.06);
+  --border-default:      rgba(255,255,255,0.10);
+  --border-strong:       rgba(255,255,255,0.20);
+  --border-focus:        rgba(255,255,255,0.30);
+
+  --font-heading:        'Sora', system-ui, sans-serif;
+  --font-body:           'Inter', system-ui, sans-serif;
+
+  --fw-regular:          400;
+  --fw-medium:           500;
+
+  --text-h1:             clamp(36px, 5vw, 64px);
+  --text-h2:             clamp(24px, 3vw, 36px);
+  --text-h3:             clamp(18px, 2vw, 22px);
+  --text-lead:           18px;
+  --text-body:           16px;
+  --text-small:          14px;
+  --text-label:          12px;
+  --text-micro:          11px;
+
+  --leading-tight:       1.25;
+  --leading-normal:      1.60;
+  --leading-loose:       1.75;
+
+  --tracking-tight:      -0.01em;
+  --tracking-normal:     0em;
+  --tracking-wide:       0.06em;
+
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 80px; --s-10: 120px;
+
+  --width-page:  1100px;
+  --width-prose:  720px;
+  --width-narrow: 560px;
+  --nav-height:    64px;
+
+  --r-sm: 6px; --r-md: 8px; --r-lg: 12px; --r-xl: 16px; --r-pill: 999px;
+
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.04) inset;
+  --shadow-pop:  0 8px 24px rgba(0,0,0,0.40);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg1);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-medium);
+  line-height: var(--leading-tight);
+  color: var(--fg1);
+  margin: 0;
+}
+h1 { font-size: var(--text-h1); letter-spacing: var(--tracking-tight); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); }
+
+p { color: var(--fg2); line-height: var(--leading-normal); margin: 0; }
+
+a { color: var(--fg1); text-decoration: none; transition: color .15s ease; }
+a:hover { color: var(--accent); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--fg3);
+}
+
+.lead { font-size: var(--text-lead); color: var(--fg2); }
+.small { font-size: var(--text-small); }
+.micro { font-size: var(--text-micro); color: var(--fg3); }
+
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.10); border-radius: 999px; }
+*::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+
+::selection { background: rgba(161,1,0,0.55); color: #fff; }
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.40);
+  outline-offset: 2px;
+}
