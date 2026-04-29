@@ -1,0 +1,227 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const products = (await getCollection('products')).sort(
+  (a, b) => (a.data.sort_order ?? 99) - (b.data.sort_order ?? 99)
+);
+
+const categoryLabel: Record<string, string> = {
+  'done-for-you': 'Done For You',
+  'consulting': 'Consulting',
+  'digital': 'Digital',
+};
+---
+
+<Layout
+  title="Products — Boost My Email"
+  description="Audits, consulting hours, and playbooks for B2B SaaS email programs."
+>
+  <section class="page-header">
+    <div class="container">
+      <span class="eyebrow">Products</span>
+      <h1>Tools and engagements for B2B SaaS email.</h1>
+      <p class="tagline">
+        Whether you need a full audit or a focused hour of senior expertise — there's an option that fits.
+      </p>
+    </div>
+  </section>
+
+  <section class="product-grid-section">
+    <div class="container">
+      <div class="grid">
+        {products.map(product => (
+          <article class="card">
+            <div class="card-top">
+              <div class="badges">
+                <span class="category-badge">{categoryLabel[product.data.category]}</span>
+                {product.data.badge && (
+                  <span class="popular-badge">{product.data.badge}</span>
+                )}
+              </div>
+              <span class="price-badge">{product.data.price_label}</span>
+            </div>
+            <h2 class="card-title">{product.data.title}</h2>
+            <p class="card-tagline">{product.data.tagline}</p>
+            {product.data.available_for && (
+              <p class="available-for">
+                For {product.data.available_for.join(' & ')} users
+              </p>
+            )}
+            <div class="card-cta">
+              <a href={`${import.meta.env.BASE_URL}products/${product.id}/`} class="btn-primary">
+                Learn more
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .container {
+    max-width: var(--width-page);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .page-header {
+    padding: 88px 0 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: clamp(28px, 3.5vw, 44px);
+    letter-spacing: -0.015em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    max-width: 640px;
+    text-wrap: balance;
+  }
+
+  .tagline {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    max-width: 540px;
+    margin: 0;
+  }
+
+  .product-grid-section {
+    padding: 64px 0 96px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 12px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: var(--shadow-card);
+    transition: background .15s ease;
+  }
+
+  .card:hover {
+    background: rgba(255,255,255,0.09);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .badges {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .category-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.55);
+    border-radius: var(--r-pill);
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .popular-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(161,1,0,0.20);
+    color: rgba(255,180,180,0.90);
+    border: 1px solid rgba(161,1,0,0.35);
+    border-radius: var(--r-pill);
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  .price-badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--r-pill);
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .card-title {
+    font-size: clamp(18px, 2vw, 22px);
+    letter-spacing: -0.005em;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .card-tagline {
+    font-size: 15px;
+    color: rgba(255,255,255,0.60);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+    text-wrap: pretty;
+  }
+
+  .available-for {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .card-cta {
+    margin-top: 8px;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--r-pill);
+    padding: 11px 22px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background .15s ease, transform .1s ease;
+  }
+
+  .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+  .btn-primary:active { transform: translateY(1px); }
+</style>

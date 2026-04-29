@@ -1,21 +1,9 @@
 ---
-const products = [
-  {
-    price: "$297",
-    title: "The SaaS Activation Blueprint",
-    desc: "Map every lifecycle email to a product milestone.",
-  },
-  {
-    price: "$397",
-    title: "The Lifecycle Revenue Dashboard",
-    desc: "Show leadership what email actually produces.",
-  },
-  {
-    price: "$497",
-    title: "The PQL Conversion Playbook",
-    desc: "Turn product signals into pipeline.",
-  },
-];
+import { getCollection } from 'astro:content';
+
+const products = (await getCollection('products'))
+  .filter(p => p.data.featured)
+  .sort((a, b) => (a.data.sort_order ?? 99) - (b.data.sort_order ?? 99));
 ---
 
 <section class="featured-products">
@@ -23,19 +11,23 @@ const products = [
     <div class="header">
       <div>
         <span class="eyebrow">Featured products</span>
-        <h2>Playbooks built from real B2B SaaS programs.</h2>
+        <h2>Audits, consulting, and playbooks for B2B SaaS email.</h2>
       </div>
+      <a href={`${import.meta.env.BASE_URL}products/`} class="view-all">View all →</a>
     </div>
     <div class="grid">
       {products.map(p => (
         <article class="card">
-          <div>
-            <span class="price-badge">{p.price}</span>
+          <div class="card-top">
+            <span class="price-badge">{p.data.price_label}</span>
+            {p.data.badge && <span class="popular-badge">{p.data.badge}</span>}
           </div>
-          <h3>{p.title}</h3>
-          <p>{p.desc}</p>
+          <h3>{p.data.title}</h3>
+          <p>{p.data.tagline}</p>
           <div class="card-cta">
-            <a href="#" class="btn-primary">Get it</a>
+            <a href={`${import.meta.env.BASE_URL}products/${p.id}/`} class="btn-primary">
+              Learn more
+            </a>
           </div>
         </article>
       ))}
@@ -78,9 +70,19 @@ const products = [
     max-width: 620px;
   }
 
+  .view-all {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+    transition: color .15s ease;
+    letter-spacing: -0.005em;
+    flex-shrink: 0;
+  }
+  .view-all:hover { color: #fff; }
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
   }
 
@@ -92,12 +94,19 @@ const products = [
     display: flex;
     flex-direction: column;
     gap: 16px;
-    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset;
+    box-shadow: var(--shadow-card);
     transition: background .15s ease;
   }
 
   .card:hover {
     background: rgba(255,255,255,0.09);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
   .price-badge {
@@ -110,6 +119,19 @@ const products = [
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.01em;
+  }
+
+  .popular-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(161,1,0,0.20);
+    color: rgba(255,180,180,0.90);
+    border: 1px solid rgba(161,1,0,0.35);
+    border-radius: 999px;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
   }
 
   h3 {
@@ -125,6 +147,7 @@ const products = [
     line-height: 1.6;
     flex: 1;
     text-wrap: pretty;
+    margin: 0;
   }
 
   .card-cta {
@@ -147,18 +170,6 @@ const products = [
     transition: background .15s ease, transform .1s ease;
   }
 
-  .btn-primary:hover {
-    background: var(--accent-hover);
-    color: #fff;
-  }
-
-  .btn-primary:active {
-    transform: translateY(1px);
-  }
-
-  @media (max-width: 760px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-  }
+  .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+  .btn-primary:active { transform: translateY(1px); }
 </style>
