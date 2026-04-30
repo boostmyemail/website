@@ -7,24 +7,61 @@ const links = [
 ];
 ---
 
-<nav>
+<nav id="site-nav">
   <div class="inner">
     <a href={import.meta.env.BASE_URL} class="logo-link">
       <img src={`${import.meta.env.BASE_URL}assets/boostmyemail-logo.png`} alt="Boost My Email" height="42" />
     </a>
+
+    <!-- Desktop right side -->
     <div class="right">
       <div class="nav-links">
         {links.map(l => <a href={l.href} class="nav-link">{l.label}</a>)}
       </div>
       <a href="https://calendly.com/boostmyemail" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a call</a>
     </div>
+
+    <!-- Mobile hamburger -->
+    <button class="hamburger" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-links">
+      {links.map(l => <a href={l.href} class="mobile-link">{l.label}</a>)}
+    </div>
+    <a href="https://calendly.com/boostmyemail" target="_blank" rel="noopener noreferrer" class="btn-primary mobile-cta">Book a call</a>
   </div>
 </nav>
 
+<script>
+  const toggle = document.getElementById('nav-toggle')!;
+  const menu   = document.getElementById('mobile-menu')!;
+  const nav    = document.getElementById('site-nav')!;
+
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('menu-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    menu.setAttribute('aria-hidden', String(!open));
+  });
+
+  // Close menu when a link is clicked
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-hidden', 'true');
+    });
+  });
+</script>
+
 <style>
   nav {
-    height: var(--nav-height);
-    background: rgba(21,20,28,0.85);
+    background: rgba(21,20,28,0.92);
     backdrop-filter: saturate(140%) blur(8px);
     -webkit-backdrop-filter: saturate(140%) blur(8px);
     border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -36,8 +73,8 @@ const links = [
   .inner {
     max-width: 1200px;
     margin: 0 auto;
-    height: 100%;
-    padding: 0 32px;
+    height: var(--nav-height);
+    padding: 0 24px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -46,12 +83,11 @@ const links = [
   .logo-link {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
   }
+  .logo-link:hover { opacity: 0.85; }
 
-  .logo-link:hover {
-    opacity: 0.85;
-  }
-
+  /* ── Desktop nav ── */
   .right {
     display: flex;
     align-items: center;
@@ -68,11 +104,9 @@ const links = [
     color: rgba(255,255,255,0.60);
     letter-spacing: -0.005em;
     transition: color .15s ease;
+    white-space: nowrap;
   }
-
-  .nav-link:hover {
-    color: #fff;
-  }
+  .nav-link:hover { color: #fff; }
 
   .btn-primary {
     display: inline-flex;
@@ -88,14 +122,82 @@ const links = [
     line-height: 1;
     white-space: nowrap;
     transition: background .15s ease, transform .1s ease;
+    flex-shrink: 0;
+  }
+  .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+  .btn-primary:active { transform: translateY(1px); }
+
+  /* ── Hamburger ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    padding: 6px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
   }
 
-  .btn-primary:hover {
-    background: var(--accent-hover);
-    color: #fff;
+  .hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.75);
+    border-radius: 2px;
+    transition: transform .2s ease, opacity .2s ease;
+    transform-origin: center;
   }
 
-  .btn-primary:active {
-    transform: translateY(1px);
+  /* Animate to X when open */
+  nav.menu-open .hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  nav.menu-open .hamburger span:nth-child(2) { opacity: 0; }
+  nav.menu-open .hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── Mobile menu panel ── */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 24px 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: rgba(21,20,28,0.97);
+  }
+
+  .mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  .mobile-link {
+    font-size: 16px;
+    color: rgba(255,255,255,0.70);
+    padding: 12px 4px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: color .15s ease;
+  }
+  .mobile-link:hover { color: #fff; }
+
+  .mobile-cta {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+
+  /* ── Responsive breakpoint ── */
+  @media (max-width: 720px) {
+    .right    { display: none; }
+    .hamburger { display: flex; }
+  }
+
+  nav.menu-open .mobile-menu {
+    display: flex;
   }
 </style>
