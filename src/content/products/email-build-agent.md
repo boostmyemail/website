@@ -1,10 +1,10 @@
 ---
 title: "The Email Build Agent"
-tagline: "Paste your approved copy and get finished HubSpot email drafts built in under 60 seconds."
-price: 597
-price_label: "$597"
-category: "digital"
-cta_label: "Get it"
+tagline: "I build an AI workflow into your HubSpot account that turns approved copy into finished email drafts automatically."
+price: 997
+price_label: "$997"
+category: "done-for-you"
+cta_label: "Book a call"
 cta_url: "https://calendly.com/boostmyemail"
 featured: false
 badge: "New"
@@ -12,34 +12,33 @@ available_for: ["HubSpot"]
 sort_order: 10
 ---
 
-A pre-built AI workflow that takes your approved email copy and builds finished drafts directly in HubSpot — subject line, preview text, headline, body, and CTA all mapped automatically. One email saves you 15–20 minutes. A full series saves you hours.
+For email teams spending too much time on manual email builds. I set up an AI-powered n8n workflow inside your HubSpot account that reads approved copy and creates finished drafts automatically — subject line, preview text, headline, body, and CTA all mapped to the right fields.
+
+You paste in the copy. The agent builds the emails. One email or an entire series.
 
 ## How it works
 
-1. Paste your approved copy into the chat interface — one email or a full campaign series at once
-2. The agent parses each email and extracts every field automatically
-3. Finished drafts land in HubSpot, named, populated, and ready to review before anything sends
+1. We connect the workflow to your HubSpot account and map it to your master template
+2. I run a live test with your copy and confirm everything is building correctly
+3. You get a 30-minute walkthrough so you know exactly how to run it going forward
 
 ## What's included
 
-### The n8n workflow file
-Pre-built and ready to import into your n8n account in one click. All logic, prompts, and HubSpot API connections are already configured.
+### Full workflow setup
+I build and configure the complete n8n workflow, connect it to your HubSpot API, and map every content field to your existing email template. You don't touch any of it — I hand it back to you running.
 
-### Setup guide + video walkthrough
-Step-by-step instructions for connecting your HubSpot account, mapping the workflow to your template, and running your first test email. Written for email marketers, not developers.
+### Template mapping
+I map the workflow to your specific HubSpot template structure — widget IDs, field types, content zones — so the agent populates the right fields every time.
 
-### Prompt library + troubleshooting reference
-The system prompts powering the parsing agent, plus fixes for the 8 most common setup and runtime issues.
+### Live test run
+Before handoff I run a real email through the workflow using your copy, so you can see exactly what it produces and confirm it matches your template.
 
----
+### 30-minute walkthrough call
+A recorded walkthrough covering how to run the agent, what to watch for, and how to handle the one manual step — banner images, which need a URL before the workflow runs or can be updated in HubSpot as a quick batch after.
 
-## Need it done for you?
-
-**$997** — I connect the workflow to your HubSpot account, map it to your template, run a live test with your copy, and hand it back to you fully working. Includes a 30-minute walkthrough call.
-
-> **One thing to know:** Banner image URLs need to exist before you run the workflow — or you add them in HubSpot afterward as a quick batch update. Everything else builds automatically.
+### 14 days of follow-up support
+Email support after delivery for any questions or edge cases as you start using it in production.
 
 ---
 
-_Want someone to run your full email program? [See the fractional engagement →](/work-with-me/)_
-```
+_Want to talk through whether this is the right fit first? [Book a 30-minute call →](https://calendly.com/boostmyemail)_
