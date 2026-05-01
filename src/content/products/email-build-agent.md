@@ -6,7 +6,7 @@ price_label: "$997"
 category: "done-for-you"
 cta_label: "Book a call"
 cta_url: "https://calendly.com/boostmyemail"
-featured: false
+featured: true
 badge: "New"
 available_for: ["HubSpot"]
 sort_order: 10
