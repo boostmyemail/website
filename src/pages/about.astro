@@ -1,0 +1,312 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="About — Boost My Email"
+  description="Michael Roberts is a fractional lifecycle email marketer for B2B SaaS and PLG companies. 10+ years of hands-on experience."
+>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">About</span>
+      <h1>Email that actually moves the needle.</h1>
+      <p class="subhead">
+        Most email marketing programs are stuck in a rut — the same sends, the same segments, the same results.
+        I work with B2B SaaS and PLG companies to break that pattern: better strategy, real execution, and the playbooks to make it repeatable.
+        Let's change that.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== WHAT MAKES MY MODEL WORK ===== -->
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Why it works</span>
+      <h2>What makes my model work.</h2>
+      <div class="qualifier-grid">
+        {[
+          { heading: "10+ years of hands-on experience", body: "Senior-level execution at the price of a university hire. No account managers, no handoffs — I do the work." },
+          { heading: "Deep platform knowledge", body: "HubSpot and Customer.io inside and out. I can build, automate, and optimize in both without a learning curve." },
+          { heading: "Early wins within 7–10 days", body: "I don't spend the first month planning. You'll see real work — campaigns, sequences, copy — in the first two weeks." },
+          { heading: "Flexible month-to-month contracts", body: "No 12-month commitments. You stay because it's working, not because you're locked in." },
+        ].map(item => (
+          <div class="qualifier-item">
+            <h3 class="qualifier-heading">{item.heading}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESULTS ===== -->
+  <section class="section section-tinted">
+    <div class="container">
+      <span class="eyebrow">Results</span>
+      <h2>What this looks like in practice.</h2>
+      <div class="results-grid">
+        <div class="result-card">
+          <p class="result-stat">2×</p>
+          <p class="result-label">CTRs doubled</p>
+          <p class="result-detail">One client doubled click-through rates by reworking email structure alone — same list, same product, better execution.</p>
+        </div>
+        <div class="result-card">
+          <p class="result-stat">18% → 35%</p>
+          <p class="result-label">Open rate jump</p>
+          <p class="result-detail">Another client went from 18% to 35% open rates with pipeline results showing up within weeks of the engagement starting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PERSONAL ===== -->
+  <section class="section">
+    <div class="container">
+      <div class="personal-block">
+        <span class="eyebrow">Outside of work</span>
+        <p class="personal-copy">
+          I love God, my family, sports, photography, fly-fishing, gardening, and banjos —
+          roughly in that order. I believe good work should be honest, useful, and not take itself too seriously.
+          That philosophy carries over into email.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="section section-cta">
+    <div class="container cta-inner">
+      <h2>Ready to work together?</h2>
+      <p class="cta-subhead">Whether you need ongoing fractional support or a one-time engagement, let's talk about what makes sense for your team.</p>
+      <div class="cta-buttons">
+        <a href="https://calendly.com/boostmyemail" target="_blank" rel="noopener noreferrer" class="btn-primary">Book a call</a>
+        <a href="/work-with-me/" class="btn-outline">Bring me on as fractional</a>
+        <a href="/products/" class="btn-outline">Browse products</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  /* ── Shared ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 16px;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 96px 0 80px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 4vw, 54px);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    max-width: 700px;
+    text-wrap: balance;
+  }
+
+  .subhead {
+    font-size: 19px;
+    color: rgba(255,255,255,0.65);
+    max-width: 680px;
+    line-height: 1.6;
+    text-wrap: pretty;
+  }
+
+  /* ── Sections ── */
+  .section {
+    padding: 80px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .section h2 {
+    font-size: clamp(24px, 3vw, 38px);
+    letter-spacing: -0.015em;
+    margin-bottom: 48px;
+    max-width: 600px;
+    text-wrap: balance;
+  }
+
+  .section-tinted {
+    background: rgba(255,255,255,0.02);
+  }
+
+  /* ── Qualifier grid ── */
+  .qualifier-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .qualifier-item {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+
+  .qualifier-heading {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .qualifier-item p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.60);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Results ── */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .result-card {
+    background: rgba(161,1,0,0.10);
+    border: 1px solid rgba(161,1,0,0.25);
+    border-radius: 12px;
+    padding: 32px 28px;
+  }
+
+  .result-stat {
+    font-family: var(--font-heading);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .result-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 16px;
+  }
+
+  .result-detail {
+    font-size: 15px;
+    color: rgba(255,255,255,0.70);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* ── Personal ── */
+  .personal-block {
+    max-width: 640px;
+  }
+
+  .personal-copy {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── CTA close ── */
+  .section-cta {
+    border-bottom: none;
+    padding-bottom: 96px;
+  }
+
+  .cta-inner {
+    text-align: center;
+  }
+
+  .cta-inner h2 {
+    font-size: clamp(24px, 3vw, 38px);
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-subhead {
+    font-size: 17px;
+    color: rgba(255,255,255,0.60);
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--r-pill);
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background .15s ease, color .15s ease, border-color .15s ease, transform .1s ease;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+  }
+
+  .btn-primary:hover { background: var(--accent-hover); color: #fff; }
+
+  .btn-outline {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.30);
+  }
+
+  .btn-outline:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.45);
+  }
+
+  .btn-primary:active,
+  .btn-outline:active { transform: translateY(1px); }
+
+  @media (max-width: 720px) {
+    .container { padding: 0 20px; }
+    .hero { padding: 64px 0 56px; }
+    .section { padding: 56px 0; }
+    .qualifier-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    .result-stat { font-size: 40px; }
+  }
+</style>
