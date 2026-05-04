@@ -10,11 +10,23 @@ import Layout from '../layouts/Layout.astro';
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="container">
-      <span class="eyebrow">About</span>
-      <h1>I'm here to make you look good.</h1>
-      <p class="subhead">
-        Not because I'm obsessed with email... but because I know how much it matters when it's done right. I work with B2B SaaS and PLG companies as a fractional partner: in the weeds, accountable, and easy to work with.
-      </p>
+      <div class="hero-grid">
+        <div class="copy">
+          <span class="eyebrow">About</span>
+          <h1>I'm here to make you look good.</h1>
+          <p class="subhead">
+            Not because I'm obsessed with email... but because I know how much it matters when it's done right. I work with B2B SaaS and PLG companies as a fractional partner: in the weeds, accountable, and easy to work with.
+          </p>
+        </div>
+        <div class="portrait-wrap">
+          <div class="portrait-glow" aria-hidden="true"></div>
+          <img
+            src="/assets/michael-roberts.png"
+            alt="Michael Roberts, founder of Boost My Email"
+            class="portrait-img"
+          />
+        </div>
+      </div>
     </div>
   </section>
 
@@ -111,6 +123,13 @@ import Layout from '../layouts/Layout.astro';
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 64px;
+  }
+
   .hero h1 {
     font-size: clamp(32px, 4vw, 54px);
     letter-spacing: -0.015em;
@@ -123,9 +142,33 @@ import Layout from '../layouts/Layout.astro';
   .subhead {
     font-size: 19px;
     color: rgba(255,255,255,0.65);
-    max-width: 680px;
+    max-width: 620px;
     line-height: 1.6;
     text-wrap: pretty;
+  }
+
+  .portrait-wrap {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    flex-shrink: 0;
+  }
+
+  .portrait-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: radial-gradient(circle at 50% 50%, rgba(161,1,0,0.35) 0%, rgba(161,1,0,0.12) 55%, rgba(161,1,0,0) 72%);
+    filter: blur(8px);
+    transform: scale(1.15);
+  }
+
+  .portrait-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
   }
 
   /* ── Sections ── */
@@ -304,5 +347,15 @@ import Layout from '../layouts/Layout.astro';
     .qualifier-grid { grid-template-columns: 1fr; }
     .results-grid { grid-template-columns: 1fr; }
     .result-stat { font-size: 40px; }
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .portrait-wrap {
+      width: 160px;
+      height: 160px;
+      margin: 0 auto;
+      order: -1;
+    }
   }
 </style>
