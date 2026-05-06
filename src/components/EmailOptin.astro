@@ -25,7 +25,8 @@
 </section>
 
 <script is:inline>
-  document.getElementById('optin-form').addEventListener('submit', function() {
+  document.getElementById('optin-form').addEventListener('submit', function(e) {
+    e.preventDefault();
     this.style.display = 'none';
     document.getElementById('optin-success').style.display = 'block';
   });
