@@ -8,7 +8,7 @@
     <p class="subtext">
       One tactic per week. Real numbers from real B2B SaaS programs. Unsubscribe any time.
     </p>
-    <form class="optin-form" name="newsletter" method="POST" data-netlify="true">
+    <form class="optin-form" name="newsletter" id="optin-form">
       <input
         type="email"
         name="email"
@@ -18,8 +18,18 @@
       />
       <button type="submit" class="btn-primary">Subscribe</button>
     </form>
+    <p class="success-message" id="optin-success" aria-live="polite">
+      Thanks — you'll get the newsletter soon.
+    </p>
   </div>
 </section>
+
+<script is:inline>
+  document.getElementById('optin-form').addEventListener('submit', function() {
+    this.style.display = 'none';
+    document.getElementById('optin-success').style.display = 'block';
+  });
+</script>
 
 <style>
   .email-optin {
@@ -116,5 +126,12 @@
 
   .btn-primary:active {
     transform: translateY(1px);
+  }
+
+  .success-message {
+    display: none;
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    margin-top: 16px;
   }
 </style>
