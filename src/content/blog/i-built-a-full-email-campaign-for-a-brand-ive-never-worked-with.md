@@ -4,6 +4,8 @@ date: 2026-05-07
 description: "No teardown. No review. No inside access. Just me, a blank doc, and a question: what would I do if I worked here?"
 ---
 
+<div class="youtube-wrap"><iframe src="https://www.youtube-nocookie.com/embed/Qx6vUE6qFII" title="I Built a Full Email Campaign for a Brand I've Never Worked With" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+
 I got tired of my own content.
 
 Not in a burnout way. But my posts never carried much weight, they were very stale, except for the random personal ones. So I decided to try something different: pick a company I've never worked with, know nothing about their actual email strategy, and build a real campaign plan for them from scratch.
@@ -56,7 +58,7 @@ This isn't meant to be a gold standard. It's a working example. Take it apart. F
 
 That's the whole point of this series.
 
-If this one sparked anything for you, let me know. And if you want to see the assets, they're yours.
+If this one sparked anything for you, let me know. And if you want to see the assets, they're yours — [download the full Wizehire campaign plan here](https://repeated-attempt-7dd.notion.site/Wizehire-Onboarding-Email-Plan-359a123e2354807d9308fc271d1d21d9).
 
 ---
 
