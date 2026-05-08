@@ -19,6 +19,14 @@ const { title, description = "Fractional lifecycle marketing for Series A–C Sa
     <link rel="icon" href={`${import.meta.env.BASE_URL}assets/boostmyemail-logo.png`} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-208CGGPJNF" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-208CGGPJNF');
+    </script>
   </head>
   <body>
     <Nav />
