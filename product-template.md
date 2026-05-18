@@ -31,6 +31,11 @@ cta_url: "https://calendly.com/boostmyemail"
 
 # OPTIONAL FIELDS
 
+# Set to true for free resources gated by an email form.
+# Free products show an inline email capture form instead of a button CTA.
+# Paid and consulting products omit this or set it to false.
+# free: true
+
 # Set to true to show this product in the Featured Products section on the homepage
 # Omit or set to false to keep it off the homepage
 featured: false

@@ -21,6 +21,7 @@ const products = defineCollection({
     category: z.enum(['done-for-you', 'consulting', 'digital']),
     cta_label: z.string(),
     cta_url: z.string(),
+    free: z.boolean().default(false),
     featured: z.boolean().default(false),
     badge: z.string().optional(),
     available_for: z.array(z.string()).optional(),

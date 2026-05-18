@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 
 const { product } = Astro.props;
 const { Content } = await render(product);
+const isFree = product.data.free;
 
 const categoryLabel: Record<string, string> = {
   'done-for-you': 'Done For You',
@@ -44,15 +45,34 @@ const categoryLabel: Record<string, string> = {
         )}
         <div class="header-cta">
           <span class="price">{product.data.price_label}</span>
-          <a
-            href={product.data.cta_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="btn-primary"
-          >
-            {product.data.cta_label}
-          </a>
+          {isFree ? (
+            <form class="email-gate" data-download-url={product.data.cta_url}>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@company.com"
+                required
+                autocomplete="email"
+                class="email-input"
+              />
+              <button type="submit" class="btn-primary">{product.data.cta_label}</button>
+            </form>
+          ) : (
+            <a
+              href={product.data.cta_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary"
+            >
+              {product.data.cta_label}
+            </a>
+          )}
         </div>
+        {isFree && (
+          <p class="success-message" hidden>
+            You're in — <a class="download-link" href={product.data.cta_url}>click here to download</a>. Check your inbox too, we'll send it there as well.
+          </p>
+        )}
       </div>
     </header>
 
@@ -62,16 +82,39 @@ const categoryLabel: Record<string, string> = {
 
     <section class="closing-cta">
       <div class="container container-narrow">
-        <h2>Ready to get started?</h2>
-        <p>Book a call and we'll figure out if it's the right fit.</p>
-        <a
-          href={product.data.cta_url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-primary btn-large"
-        >
-          {product.data.cta_label}
-        </a>
+        {isFree ? (
+          <>
+            <h2>Get the template</h2>
+            <p>Drop your email and it's yours. Free.</p>
+            <form class="email-gate closing-gate" data-download-url={product.data.cta_url}>
+              <input
+                type="email"
+                name="email"
+                placeholder="you@company.com"
+                required
+                autocomplete="email"
+                class="email-input"
+              />
+              <button type="submit" class="btn-primary btn-large">{product.data.cta_label}</button>
+            </form>
+            <p class="success-message" hidden>
+              You're in — <a class="download-link" href={product.data.cta_url}>click here to download</a>. Check your inbox too, we'll send it there as well.
+            </p>
+          </>
+        ) : (
+          <>
+            <h2>Ready to get started?</h2>
+            <p>Book a call and we'll figure out if it's the right fit.</p>
+            <a
+              href={product.data.cta_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary btn-large"
+            >
+              {product.data.cta_label}
+            </a>
+          </>
+        )}
       </div>
     </section>
 
@@ -83,6 +126,29 @@ const categoryLabel: Record<string, string> = {
 
   </article>
 </Layout>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('.email-gate').forEach(form => {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const email = (form.querySelector('input[type="email"]') as HTMLInputElement).value;
+      const downloadUrl = form.dataset.downloadUrl ?? '#';
+
+      // Fire Customer.io identify if the forms handler is present
+      if (typeof (window as any)._cio !== 'undefined') {
+        (window as any)._cio.identify({ email });
+      }
+
+      const successMsg = form.nextElementSibling as HTMLElement | null;
+      if (successMsg?.classList.contains('success-message')) {
+        const link = successMsg.querySelector<HTMLAnchorElement>('.download-link');
+        if (link) link.href = downloadUrl;
+        form.hidden = true;
+        successMsg.hidden = false;
+      }
+    });
+  });
+</script>
 
 <style>
   .container {
@@ -175,7 +241,7 @@ const categoryLabel: Record<string, string> = {
   .header-cta {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
     margin-top: 32px;
   }
@@ -188,6 +254,44 @@ const categoryLabel: Record<string, string> = {
     letter-spacing: -0.02em;
   }
 
+  /* ── Email gate form ── */
+  .email-gate {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .email-input {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--r-pill);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 12px 18px;
+    outline: none;
+    transition: border-color .15s ease, background .15s ease;
+    min-width: 220px;
+  }
+  .email-input::placeholder { color: rgba(255,255,255,0.35); }
+  .email-input:focus {
+    border-color: rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.10);
+  }
+
+  .success-message {
+    font-size: 15px;
+    color: rgba(255,255,255,0.70);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+  .success-message a {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
   /* ── Buttons ── */
   .btn-primary {
     display: inline-flex;
@@ -195,6 +299,8 @@ const categoryLabel: Record<string, string> = {
     justify-content: center;
     background: var(--accent);
     color: #fff;
+    border: none;
+    cursor: pointer;
     border-radius: var(--r-pill);
     padding: 13px 28px;
     font-family: var(--font-body);
@@ -301,6 +407,12 @@ const categoryLabel: Record<string, string> = {
     font-size: 16px;
     color: rgba(255,255,255,0.60);
     margin-bottom: 32px;
+  }
+  .closing-gate {
+    justify-content: center;
+  }
+  .closing-cta .success-message {
+    margin-top: 0;
   }
 
   /* ── Footer ── */
