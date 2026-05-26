@@ -47,7 +47,7 @@ const categoryLabel: Record<string, string> = {
           <span class="price">{product.data.price_label}</span>
           {isFree ? (
             <>
-              <form class="email-gate" data-download-url={product.data.cta_url}>
+              <form class="email-gate" data-download-url={product.data.cta_url} data-form-name={`${product.data.title} — Product Page`}>
                 <input
                   type="email"
                   name="email"
@@ -88,7 +88,7 @@ const categoryLabel: Record<string, string> = {
           <>
             <h2>Get the template</h2>
             <p>Drop your email and it's yours. Free.</p>
-            <form class="email-gate closing-gate" data-download-url={product.data.cta_url}>
+            <form class="email-gate closing-gate" data-download-url={product.data.cta_url} data-form-name={`${product.data.title} — Product Page`}>
               <input
                 type="email"
                 name="email"
@@ -145,6 +145,13 @@ const categoryLabel: Record<string, string> = {
 
       if (!isBot && typeof (window as any)._cio !== 'undefined') {
         (window as any)._cio.identify({ email });
+        (window as any)._cio.track('form_submit', {
+          email,
+          form_name: form.dataset.formName,
+          form_type: 'custom',
+          form_url: window.location.href,
+          form_url_params: '[]'
+        });
       }
 
       const successMsg = form.nextElementSibling as HTMLElement | null;
