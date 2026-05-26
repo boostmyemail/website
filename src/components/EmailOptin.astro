@@ -8,7 +8,7 @@
     <p class="subtext">
       In-depth pieces on lifecycle email. Thoughts and stories from the work I'm actually doing. There is no fixed schedule, just useful writing when I have something worth saying.
     </p>
-    <form class="optin-form" name="newsletter" id="optin-form" method="post">
+    <form class="optin-form" id="optin-form" method="post">
       <input
         type="email"
         name="email"
@@ -16,6 +16,8 @@
         placeholder="you@company.com"
         class="email-input"
       />
+      <input type="text" name="b_check" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="hidden" id="optin-ts" />
       <button type="submit" class="btn-primary">Subscribe</button>
     </form>
     <p class="success-message" id="optin-success" aria-live="polite">
@@ -25,11 +27,24 @@
 </section>
 
 <script is:inline>
-  document.getElementById('optin-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    this.style.display = 'none';
-    document.getElementById('optin-success').style.display = 'block';
-  });
+  (function () {
+    var ts = Date.now();
+    var tsField = document.getElementById('optin-ts');
+    if (tsField) tsField.value = ts;
+
+    document.getElementById('optin-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var hp = this.querySelector('input[name="b_check"]');
+      var isBot = (hp && hp.value !== '') || (Date.now() - ts < 2000);
+
+      if (!isBot && typeof window._cio !== 'undefined') {
+        window._cio.identify({ email: this.querySelector('input[type="email"]').value });
+      }
+
+      this.style.display = 'none';
+      document.getElementById('optin-success').style.display = 'block';
+    });
+  })();
 </script>
 
 <style>
@@ -79,6 +94,17 @@
     flex-wrap: wrap;
     max-width: 520px;
     margin: 0 auto;
+    position: relative;
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .email-input {
