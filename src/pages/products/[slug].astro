@@ -56,6 +56,8 @@ const categoryLabel: Record<string, string> = {
                   autocomplete="email"
                   class="email-input"
                 />
+                <input type="text" name="b_check" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <input type="hidden" class="gate-ts" />
                 <button type="submit" class="btn-primary">{product.data.cta_label}</button>
               </form>
               <p class="success-message" hidden>
@@ -95,6 +97,8 @@ const categoryLabel: Record<string, string> = {
                 autocomplete="email"
                 class="email-input"
               />
+              <input type="text" name="b_check" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+              <input type="hidden" class="gate-ts" />
               <button type="submit" class="btn-primary btn-large">{product.data.cta_label}</button>
             </form>
             <p class="success-message" hidden>
@@ -128,14 +132,18 @@ const categoryLabel: Record<string, string> = {
 </Layout>
 
 <script>
+  const loadedAt = Date.now();
+  document.querySelectorAll<HTMLInputElement>('.gate-ts').forEach(f => { f.value = String(loadedAt); });
+
   document.querySelectorAll<HTMLFormElement>('.email-gate').forEach(form => {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const email = (form.querySelector('input[type="email"]') as HTMLInputElement).value;
       const downloadUrl = form.dataset.downloadUrl ?? '#';
+      const hp = form.querySelector<HTMLInputElement>('input[name="b_check"]');
+      const isBot = (hp !== null && hp.value !== '') || (Date.now() - loadedAt < 2000);
 
-      // Fire Customer.io identify if the forms handler is present
-      if (typeof (window as any)._cio !== 'undefined') {
+      if (!isBot && typeof (window as any)._cio !== 'undefined') {
         (window as any)._cio.identify({ email });
       }
 
@@ -260,6 +268,17 @@ const categoryLabel: Record<string, string> = {
     gap: 8px;
     flex-wrap: wrap;
     align-items: center;
+    position: relative;
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
   }
 
   .email-input {
