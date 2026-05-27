@@ -38,7 +38,15 @@
       var isBot = (hp && hp.value !== '') || (Date.now() - ts < 2000);
 
       if (!isBot && typeof window._cio !== 'undefined') {
-        window._cio.identify({ email: this.querySelector('input[type="email"]').value });
+        var emailVal = this.querySelector('input[type="email"]').value;
+        window._cio.identify({ email: emailVal });
+        window._cio.track('form_submit', {
+          email: emailVal,
+          form_name: 'newsletter',
+          form_type: 'custom',
+          form_url: window.location.href,
+          form_url_params: '[]'
+        });
       }
 
       this.style.display = 'none';
