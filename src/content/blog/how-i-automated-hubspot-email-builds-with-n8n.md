@@ -5,19 +5,19 @@ date: 2026-05-28
 tags: [email marketing, automation, HubSpot, n8n, AI]
 ---
 
-I'll be honest: I am skeptical. Every "AI agent" I click into feels like smoke and mirrors, and most of what I see is focused on research or outbound.
+I am skeptical. Every "AI agent" I click into is underwhelming.
 
-That's not my world. My world is lifecycle marketing — building and running email programs for B2B SaaS companies.
+And it's not my world. My world is lifecycle marketing. I build and run email programs for B2B SaaS companies.
 
-Would AI really replace my work? I wasn't sure, but I decided to figure out what it could look like in practice.
+Will AI really replace my work? I'm sure, so I decided to figure out what it could look like in practice.
 
-After a lot of trial and error, I landed on finding workflows that remove a small, specific part of my day of real grunt work. That's the breakthrough. And this post walks through the first one I'm genuinely proud of.
+After a lot of trial and error, I landed on finding workflows that remove a small, specific piece of grunt work. And this post walks through the first one I'm genuinely proud of.
 
 ---
 
 ## The problem: approved copy, tedious execution
 
-I have great clients. Many of them shoot me a note when a campaign is fully written, reviewed, and approved. I have the copy for six emails in a Google Doc. All I need to do is build each one in HubSpot. That means clone the template, paste in the subject line, preview text, headline, body, CTA, and URL, check the formatting, and move on.
+I have great clients. Many of them shoot me a note when a campaign is fully written, reviewed, and approved. I have the copy for six emails in a Google Doc. All I need to do is build each one in HubSpot, which means clone the template, paste in the subject line, preview text, headline, body, CTA, and URL, check the formatting, and move on.
 
 There's no judgment involved. It's not creative work. It's copy-paste one piece after another, and it's slow. My phone is most effective at distracting me during this part of my work.
 
@@ -81,13 +81,13 @@ Rules:
 - Do not invent content. Only extract what's provided.
 ```
 
-Now, your format requirements for your email template will look different than this. The key constraint is that Claude must return clean JSON every time. No commentary, no formatting around it.
+Your will look different, and will require other elements. The key constraint is that Claude must return clean JSON every time. No commentary, no formatting around it.
 
 ---
 
 ### Step 3: A JavaScript node cleans and splits the output
 
-Claude's response comes back as text, so this node strips any stray markdown and parses it into an array of email objects. One per email. I used Claude to help me write the JavaScript for this node.
+Claude's response comes back as text, so this node strips any stray markdown and parses it into an array of email objects. One per email. I'm no developer, so I used Claude to help me write the JavaScript for this node.
 
 ```jsx
 const raw = $input.first().json.text;
@@ -248,7 +248,7 @@ return [{
 }];
 ```
 
-Again, I don't understand most of this. I'm learning. But it feels like this is what AI was created to do.
+Again, I don't understand most of this. I'm learning. Claude got me there.
 
 ---
 
@@ -268,9 +268,9 @@ HubSpot updates the draft in place. `sendOnPublish` is set to `false`, so nothin
 
 For a single email, the savings feel incremental. Maybe 10 minutes down to 5. Not life-changing on its own.
 
-But for a six-email campaign with pre-approved copy, the math changes fast. What used to take an hour now takes about 10 minutes. And that's me trying to be conservative. The workflow itself finishes in less than 60 seconds. But I'm realistic and want to add minutes to upload images (which still happens manually) and do a final QA pass.
+But for a six-email campaign with pre-approved copy, the math changes fast. What used to take an hour now takes about 10 minutes. And that's trying to be conservative. The workflow itself finishes in less than 60 seconds. But I'm realistic and want to add minutes to upload images (which still happens manually) and do a final QA pass.
 
-But that's a 60-minute task down to 10.
+But still, a 60-minute task down to 10.
 
 ---
 
@@ -283,6 +283,8 @@ That's fine. And good! AI gives you a path via debugging. When something breaks,
 The principle here isn't "here's a workflow you can download and run." It's: **you can now build specific, functional tools for the work you actually do, without an engineering background, and AI is what makes that possible.**
 
 Start small. Prove one thing out. Then expand.
+
+Of course, if you'd like me to build this for your team, [book some time](https://calendly.com/boostmyemail). 
 
 ---
 
