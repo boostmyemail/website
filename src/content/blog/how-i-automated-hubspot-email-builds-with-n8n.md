@@ -1,6 +1,6 @@
 ---
 title: "How I Automated HubSpot Email Builds with n8n (No Engineering Background Required)"
-description: "I used to spend 10 minutes manually copying and pasting approved copy into every HubSpot email. Here's how I built a workflow that does it in under 60 seconds — and what that taught me about AI as a tool for non-technical marketers."
+description: "I used to spend 10 minutes manually copying approved copy into every HubSpot email. Here's how I built a workflow that does it in under 60 seconds."
 date: 2026-05-28
 tags: [email marketing, automation, HubSpot, n8n, AI]
 ---
