@@ -14,6 +14,7 @@ const { product } = Astro.props;
 const { slug } = Astro.params;
 const { Content } = await render(product);
 const isFree = product.data.free;
+const emailFieldName = `${slug.replace(/-/g, '_')}_email`;
 
 const categoryLabel: Record<string, string> = {
   'done-for-you': 'Done For You',
@@ -51,7 +52,7 @@ const categoryLabel: Record<string, string> = {
               <form class="email-gate" data-download-url={product.data.cta_url}>
                 <input
                   type="email"
-                  name="product_email"
+                  name={emailFieldName}
                   placeholder="you@company.com"
                   required
                   autocomplete="email"
@@ -90,7 +91,7 @@ const categoryLabel: Record<string, string> = {
             <form class="email-gate closing-gate" data-download-url={product.data.cta_url}>
               <input
                 type="email"
-                name="product_email"
+                name={emailFieldName}
                 placeholder="you@company.com"
                 required
                 autocomplete="email"
