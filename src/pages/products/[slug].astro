@@ -49,7 +49,7 @@ const categoryLabel: Record<string, string> = {
           {isFree ? (
             <>
               <form class="email-gate" data-download-url={product.data.cta_url}>
-                <input type="hidden" name="form_id" value={`product-${slug}`} />
+                <input type="text" name="form_id" value={`product-${slug}`} aria-hidden="true" tabindex="-1" style="position:absolute;opacity:0;pointer-events:none;width:0;height:0;overflow:hidden;" />
                 <input
                   type="email"
                   name="email"
