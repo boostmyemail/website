@@ -11,6 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+const { slug } = Astro.params;
 const { Content } = await render(product);
 const isFree = product.data.free;
 
@@ -48,6 +49,7 @@ const categoryLabel: Record<string, string> = {
           {isFree ? (
             <>
               <form class="email-gate" data-download-url={product.data.cta_url}>
+                <input type="hidden" name="form_id" value={`product-${slug}`} />
                 <input
                   type="email"
                   name="email"
@@ -87,6 +89,7 @@ const categoryLabel: Record<string, string> = {
             <h2>Get the template</h2>
             <p>Drop your email and it's yours. Free.</p>
             <form class="email-gate closing-gate" data-download-url={product.data.cta_url}>
+              <input type="hidden" name="form_id" value={`product-${slug}`} />
               <input
                 type="email"
                 name="email"
