@@ -1,7 +1,7 @@
 ---
 title: "The Email Build Agent"
 tagline: "I build an AI workflow into your HubSpot account that turns approved copy into finished email drafts automatically."
-price: 2,499
+price: 2499
 price_label: "$2,499"
 category: "done-for-you"
 cta_label: "Book a call"
