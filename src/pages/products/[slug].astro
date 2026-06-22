@@ -386,6 +386,28 @@ const categoryLabel: Record<string, string> = {
     margin: 0;
   }
 
+  .product-body :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 0 28px;
+    font-size: 15px;
+  }
+  .product-body :global(th),
+  .product-body :global(td) {
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 10px 14px;
+    text-align: left;
+    color: rgba(255,255,255,0.80);
+  }
+  .product-body :global(th) {
+    background: rgba(255,255,255,0.05);
+    font-weight: 500;
+    color: var(--fg1);
+  }
+  .product-body :global(tr:nth-child(even) td) {
+    background: rgba(255,255,255,0.02);
+  }
+
   .product-body :global(hr) {
     border: none;
     border-top: 1px solid rgba(255,255,255,0.08);
