@@ -1,0 +1,112 @@
+---
+import { testimonials } from '../data/testimonials';
+---
+
+<section class="all-testimonials">
+  <div class="inner">
+    <div class="header">
+      <span class="eyebrow">In their words</span>
+      <h2>What people who've worked with me actually say.</h2>
+    </div>
+    <div class="masonry">
+      {testimonials.map(t => (
+        <figure class="card">
+          <blockquote>
+            &ldquo;{t.quote}&rdquo;
+          </blockquote>
+          <figcaption>
+            <span class="name">{t.name}</span>
+            <span class="role">{t.title}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .all-testimonials {
+    padding: 80px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 14px;
+  }
+
+  h2 {
+    font-size: clamp(24px, 3vw, 38px);
+    letter-spacing: -0.015em;
+    max-width: 640px;
+    text-wrap: balance;
+  }
+
+  .masonry {
+    columns: 3 320px;
+    column-gap: 20px;
+  }
+
+  .card {
+    break-inside: avoid;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-left: 2px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 22px 22px 20px;
+    margin: 0 0 20px;
+    display: block;
+  }
+
+  blockquote {
+    font-style: italic;
+    color: rgba(255,255,255,0.78);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+    text-wrap: pretty;
+  }
+
+  figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .name {
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+
+  .role {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 760px) {
+    .masonry {
+      columns: 1;
+    }
+    .all-testimonials {
+      padding: 56px 20px;
+    }
+  }
+</style>
