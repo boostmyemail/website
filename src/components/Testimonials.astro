@@ -1,24 +1,5 @@
 ---
-const testimonials = [
-  {
-    quote: "Michael is my absolute go-to for all things email marketing. He has the answers and experience for any industry.",
-    name: "Connor Minogue",
-    title: "CEO",
-    company: "Minogue Management Group",
-  },
-  {
-    quote: "His expertise is evident in his ability to develop scalable programs that not only engage audiences but also revitalize existing content.",
-    name: "Jessica Hollander Torres",
-    title: "Global CMO",
-    company: "Airwater Co.",
-  },
-  {
-    quote: "He can create and execute lifecycle marketing plans flawlessly, but also bring critique and feedback needed to make something better.",
-    name: "Joe Martin",
-    title: "SVP of Marketing",
-    company: "Scorpion",
-  },
-];
+import { testimonials } from '../data/testimonials';
 ---
 
 <section class="testimonials">
@@ -27,18 +8,24 @@ const testimonials = [
       <span class="eyebrow">What clients say</span>
       <h2>Senior operators trust the work.</h2>
     </div>
-    <div class="grid">
-      {testimonials.map(t => (
-        <figure class="card">
-          <blockquote>
-            &ldquo;{t.quote}&rdquo;
-          </blockquote>
-          <figcaption>
-            <span class="name">{t.name}</span>
-            <span class="role">{t.title} · {t.company}</span>
-          </figcaption>
-        </figure>
-      ))}
+    <div class="carousel" id="testimonial-carousel">
+      <div class="track" id="testimonial-track">
+        {testimonials.map(t => (
+          <figure class="card">
+            <blockquote>
+              &ldquo;{t.quote}&rdquo;
+            </blockquote>
+            <figcaption>
+              <span class="name">{t.name}</span>
+              <span class="role">{t.title}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+      <div class="controls">
+        <button type="button" class="nav prev" id="testimonial-prev" aria-label="Previous testimonial">&larr;</button>
+        <button type="button" class="nav next" id="testimonial-next" aria-label="Next testimonial">&rarr;</button>
+      </div>
     </div>
   </div>
 </section>
@@ -55,6 +42,10 @@ const testimonials = [
 
   .header {
     margin-bottom: 36px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
   }
 
   .eyebrow {
@@ -73,10 +64,15 @@ const testimonials = [
     max-width: 620px;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  .carousel {
+    position: relative;
+  }
+
+  .track {
+    display: flex;
     gap: 20px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
   }
 
   .card {
@@ -87,7 +83,9 @@ const testimonials = [
     margin: 0;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 0 0 calc((100% - 40px) / 3);
+    min-width: 0;
+    height: 260px;
   }
 
   blockquote {
@@ -98,6 +96,10 @@ const testimonials = [
     margin: 0 0 22px 0;
     flex: 1;
     text-wrap: pretty;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
   }
 
   figcaption {
@@ -121,9 +123,116 @@ const testimonials = [
     text-transform: uppercase;
   }
 
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+  }
+
+  .nav {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.03);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .nav:hover {
+    border-color: var(--accent);
+    background: rgba(161,1,0,0.14);
+  }
+
+  @media (max-width: 960px) {
+    .card {
+      flex: 0 0 calc((100% - 20px) / 2);
+    }
+  }
+
   @media (max-width: 760px) {
-    .grid {
-      grid-template-columns: 1fr;
+    .card {
+      flex: 0 0 100%;
+      height: auto;
+      min-height: 220px;
+    }
+
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 </style>
+
+<script>
+  function initTestimonialCarousel() {
+    const carousel = document.getElementById('testimonial-carousel');
+    if (!carousel) return;
+
+    const track = document.getElementById('testimonial-track') as HTMLElement;
+    const prevBtn = document.getElementById('testimonial-prev') as HTMLButtonElement;
+    const nextBtn = document.getElementById('testimonial-next') as HTMLButtonElement;
+    const cards = Array.from(track.children) as HTMLElement[];
+    const total = cards.length;
+    let index = 0;
+    let timer: ReturnType<typeof setInterval> | null = null;
+
+    function step() {
+      const card = cards[0];
+      const gap = parseFloat(getComputedStyle(track).gap || '20');
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function goTo(i: number) {
+      index = ((i % total) + total) % total;
+      track.scrollTo({ left: index * step(), behavior: 'smooth' });
+    }
+
+    function next() {
+      goTo(index + 1);
+    }
+
+    function prev() {
+      goTo(index - 1);
+    }
+
+    function startAutoplay() {
+      stopAutoplay();
+      timer = setInterval(next, 5000);
+    }
+
+    function stopAutoplay() {
+      if (timer) clearInterval(timer);
+      timer = null;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      next();
+      startAutoplay();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      prev();
+      startAutoplay();
+    });
+
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+
+    window.addEventListener('resize', () => goTo(index));
+
+    startAutoplay();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTestimonialCarousel);
+  } else {
+    initTestimonialCarousel();
+  }
+</script>
