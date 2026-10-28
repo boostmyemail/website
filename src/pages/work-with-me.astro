@@ -137,7 +137,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="compare-card">
           <div class="compare-label">Full-time hire</div>
-          <div class="compare-price">$90–120K<span>/yr</span></div>
+          <div class="compare-price compare-price--stack">$120,000+<span> a year</span></div>
           <ul class="compare-list muted">
             <li>3–4 month ramp time</li>
             <li>Benefits, payroll taxes, overhead</li>
@@ -148,7 +148,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="compare-card">
           <div class="compare-label">Marketing agency</div>
-          <div class="compare-price">$10–15K<span>/mo</span></div>
+          <div class="compare-price compare-price--stack">$12K to $15K<span> a month</span></div>
           <ul class="compare-list muted">
             <li>Account manager layer between you and the work</li>
             <li>Constant context-switching across clients</li>
@@ -456,6 +456,21 @@ import Layout from '../layouts/Layout.astro';
     color: rgba(255,255,255,0.45);
     font-weight: 400;
     letter-spacing: 0;
+  }
+  .compare-price--stack {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+  .compare-price--stack span {
+    display: block;
+    margin-top: 6px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  @media (max-width: 840px) and (min-width: 761px) {
+    .compare-price--stack {
+      font-size: 24px;
+    }
   }
   .compare-list {
     list-style: none;
