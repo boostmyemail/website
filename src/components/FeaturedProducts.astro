@@ -4,6 +4,13 @@ import { getCollection } from 'astro:content';
 const products = (await getCollection('products'))
   .filter(p => p.data.featured)
   .sort((a, b) => (a.data.sort_order ?? 99) - (b.data.sort_order ?? 99));
+
+function cardHref(product: (typeof products)[number]) {
+  const href = product.data.href;
+  if (!href) return `${import.meta.env.BASE_URL}products/${product.id}/`;
+  if (/^https?:\/\//.test(href)) return href;
+  return `${import.meta.env.BASE_URL}${href.replace(/^\//, '')}`;
+}
 ---
 
 <section class="featured-products">
@@ -25,7 +32,7 @@ const products = (await getCollection('products'))
           <h3>{p.data.title}</h3>
           <p>{p.data.tagline}</p>
           <div class="card-cta">
-            <a href={`${import.meta.env.BASE_URL}products/${p.id}/`} class="btn-primary">
+            <a href={cardHref(p)} class="btn-primary">
               Learn more
             </a>
           </div>

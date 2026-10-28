@@ -4,10 +4,12 @@ import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
   const products = await getCollection('products');
-  return products.map(product => ({
-    params: { slug: product.id },
-    props: { product },
-  }));
+  return products
+    .filter(product => !product.data.href)
+    .map(product => ({
+      params: { slug: product.id },
+      props: { product },
+    }));
 }
 
 const { product } = Astro.props;

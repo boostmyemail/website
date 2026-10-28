@@ -24,6 +24,8 @@ const products = defineCollection({
     free: z.boolean().default(false),
     featured: z.boolean().default(false),
     badge: z.string().optional(),
+    // Canonical page when this offer already lives outside /products/:slug/.
+    href: z.string().optional(),
     available_for: z.array(z.string()).optional(),
     sort_order: z.number().optional(),
   }),
