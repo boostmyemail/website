@@ -6,6 +6,13 @@ const products = (await getCollection('products')).sort(
   (a, b) => (a.data.sort_order ?? 99) - (b.data.sort_order ?? 99)
 );
 
+function cardHref(product: (typeof products)[number]) {
+  const href = product.data.href;
+  if (!href) return `${import.meta.env.BASE_URL}products/${product.id}/`;
+  if (/^https?:\/\//.test(href)) return href;
+  return `${import.meta.env.BASE_URL}${href.replace(/^\//, '')}`;
+}
+
 const categoryLabel: Record<string, string> = {
   'done-for-you': 'Done For You',
   'consulting': 'Consulting',
@@ -49,7 +56,7 @@ const categoryLabel: Record<string, string> = {
               </p>
             )}
             <div class="card-cta">
-              <a href={`${import.meta.env.BASE_URL}products/${product.id}/`} class="btn-primary">
+              <a href={cardHref(product)} class="btn-primary">
                 Learn more
               </a>
             </div>

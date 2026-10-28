@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout
   title="Work With Me — Boost My Email"
-  description="Senior lifecycle email execution for B2B SaaS and PLG companies. $7,000/month, month-to-month. No long-term commitment."
+  description="Senior lifecycle email execution for B2B SaaS and PLG companies. $9,000/month, month-to-month. No long-term commitment."
 >
 
   <!-- ===== HERO ===== -->
@@ -13,7 +13,7 @@ import Layout from '../layouts/Layout.astro';
       <span class="eyebrow">Fractional Lifecycle Email</span>
       <h1>Senior email execution.<br />Without the full-time hire.</h1>
       <p class="subhead">
-        $7,500/month. Month-to-month. No ramp time, no benefits overhead, no 12-month commitment —
+        $9,000/month. Month-to-month. No ramp time, no benefits overhead, no 12-month commitment —
         just someone senior who actually does the work.
       </p>
       <a href="https://calendly.com/boostmyemail" target="_blank" rel="noopener noreferrer" class="btn-primary">
@@ -122,11 +122,11 @@ import Layout from '../layouts/Layout.astro';
   <section class="section section-tinted">
     <div class="container container-narrow">
       <span class="eyebrow">The investment</span>
-      <h2>$7,500/month. Here's what that actually means.</h2>
+      <h2>$9,000/month. Here's what that actually means.</h2>
       <div class="compare-grid">
         <div class="compare-card compare-card--accent">
           <div class="compare-label">Boost My Email</div>
-          <div class="compare-price">$7.5K<span>/mo</span></div>
+          <div class="compare-price">$9K<span>/mo</span></div>
           <ul class="compare-list">
             <li>Senior execution, day one</li>
             <li>No benefits, no payroll overhead</li>
@@ -137,7 +137,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="compare-card">
           <div class="compare-label">Full-time hire</div>
-          <div class="compare-price">$90–120K<span>/yr</span></div>
+          <div class="compare-price compare-price--stack">$120,000+<span> a year</span></div>
           <ul class="compare-list muted">
             <li>3–4 month ramp time</li>
             <li>Benefits, payroll taxes, overhead</li>
@@ -148,7 +148,7 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="compare-card">
           <div class="compare-label">Marketing agency</div>
-          <div class="compare-price">$10–15K<span>/mo</span></div>
+          <div class="compare-price compare-price--stack">$12K to $15K<span> a month</span></div>
           <ul class="compare-list muted">
             <li>Account manager layer between you and the work</li>
             <li>Constant context-switching across clients</li>
@@ -456,6 +456,21 @@ import Layout from '../layouts/Layout.astro';
     color: rgba(255,255,255,0.45);
     font-weight: 400;
     letter-spacing: 0;
+  }
+  .compare-price--stack {
+    font-size: 30px;
+    line-height: 1.1;
+  }
+  .compare-price--stack span {
+    display: block;
+    margin-top: 6px;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  @media (max-width: 840px) and (min-width: 761px) {
+    .compare-price--stack {
+      font-size: 24px;
+    }
   }
   .compare-list {
     list-style: none;
