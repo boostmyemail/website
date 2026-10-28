@@ -48,4 +48,4 @@ The call is recorded so you have a reference, and all recommendations are writte
 
 ---
 
-**Want me to implement the changes?** If you'd like to bring me on to execute the roadmap, I offer fractional engagements starting at $7,000/month. [See the details →](/work-with-me/)
+**Want me to implement the changes?** If you'd like to bring me on to execute the roadmap, I offer fractional engagements starting at $9,000/month. [See the details →](/work-with-me/)
