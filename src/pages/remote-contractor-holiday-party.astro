@@ -1,0 +1,417 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const checkoutUrl = 'https://link.waveapps.com/n83we7-duhvrn';
+const ctaLabel = 'Get your ticket — $75';
+
+const facts = [
+  { stat: '$75', label: 'USD', detail: 'Price for one ticket.' },
+  { stat: '1', label: 'Per payment', detail: 'Each payment covers a single ticket.' },
+  { stat: 'Wave', label: 'Checkout', detail: 'Payment is completed on Wave, not on this site.' },
+];
+
+const steps = [
+  { n: '01', heading: 'Open checkout', body: 'Use Get your ticket — $75. It goes straight to the Wave payment page.' },
+  { n: '02', heading: 'Pay $75 USD on Wave', body: 'Wave collects the payment. This page does not ask for card details.' },
+  { n: '03', heading: 'One ticket per payment', body: 'That checkout is for one ticket. To buy another, complete checkout again.' },
+];
+---
+
+<Layout
+  title="Remote/Contractor Holiday Party at Top Golf — Boost My Email"
+  description="A holiday gathering for remote workers and contractors at Top Golf. Tickets are $75 USD. One ticket per payment. Checkout is on Wave."
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="copy">
+        <span class="eyebrow">Holiday gathering</span>
+        <h1>Remote/Contractor Holiday Party at Top Golf</h1>
+        <p class="subhead">
+          A holiday gathering for remote workers and contractors.
+        </p>
+        <p class="support">
+          Tickets are $75&nbsp;USD. One payment covers one ticket, and checkout is on Wave.
+        </p>
+      </div>
+
+      <aside class="ticket" aria-label="Ticket">
+        <p class="ticket-kicker">Ticket</p>
+        <p class="ticket-price">$75 <span>USD</span></p>
+        <p class="ticket-note">One ticket per payment</p>
+        <a
+          href={checkoutUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary btn-large"
+        >
+          {ctaLabel}
+        </a>
+        <p class="ticket-fine">
+          Opens Wave checkout. Card details are not collected on this page.
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">The ticket</span>
+      <h2>Price, quantity, and where you pay.</h2>
+      <div class="facts">
+        {facts.map(fact => (
+          <article class="fact">
+            <p class="fact-stat">{fact.stat}</p>
+            <p class="fact-label">{fact.label}</p>
+            <p class="fact-detail">{fact.detail}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tinted">
+    <div class="container container-narrow">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Remote workers and contractors.</h2>
+      <p class="prose">
+        This gathering is for people who work remotely or on contract.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Checkout</span>
+      <h2>How to get a ticket.</h2>
+      <div class="steps">
+        {steps.map(step => (
+          <div class="step">
+            <span class="step-num">{step.n}</span>
+            <div class="step-body">
+              <h3>{step.heading}</h3>
+              <p>{step.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="container container-narrow">
+      <h2>Get your ticket.</h2>
+      <p>Checkout continues on Wave. $75&nbsp;USD, one ticket per payment.</p>
+      <a
+        href={checkoutUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary btn-large"
+      >
+        {ctaLabel}
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .container {
+    max-width: var(--width-page);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .container-narrow {
+    max-width: 720px;
+  }
+
+  .eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 16px;
+  }
+
+  .hero {
+    padding: 104px 0 96px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    align-items: center;
+    gap: 64px;
+  }
+
+  h1 {
+    font-size: clamp(36px, 4.6vw, 58px);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    max-width: 680px;
+    margin-bottom: 24px;
+    text-wrap: balance;
+  }
+
+  .subhead {
+    font-size: 19px;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 560px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+    text-wrap: pretty;
+  }
+
+  .support {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.55);
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .ticket {
+    background: rgba(161, 1, 0, 0.12);
+    border: 1px solid rgba(161, 1, 0, 0.40);
+    border-radius: var(--r-xl);
+    padding: 28px 24px 24px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .ticket-kicker {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 12px;
+  }
+
+  .ticket-price {
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .ticket-price span {
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.55);
+    font-weight: 500;
+  }
+
+  .ticket-note {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 24px;
+  }
+
+  .ticket-fine {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--r-pill);
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background .15s ease, transform .1s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: #fff;
+  }
+
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+
+  .btn-large {
+    padding: 16px 28px;
+    font-size: 16px;
+    width: 100%;
+  }
+
+  .section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section-tinted {
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .section h2,
+  .closing h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    letter-spacing: -0.015em;
+    margin-bottom: 28px;
+    text-wrap: balance;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .fact {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--r-lg);
+    padding: 28px 24px;
+  }
+
+  .fact-stat {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .fact-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 12px;
+  }
+
+  .fact-detail {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.55;
+  }
+
+  .prose {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.65;
+    max-width: 560px;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+  }
+
+  .step {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .step:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .step-num {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    width: 28px;
+    padding-top: 3px;
+  }
+
+  .step-body h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+    letter-spacing: -0.005em;
+  }
+
+  .step-body p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.60);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  .closing {
+    background: rgba(161, 1, 0, 0.10);
+    border-top: 1px solid rgba(161, 1, 0, 0.25);
+    padding: 88px 0 96px;
+    text-align: center;
+  }
+
+  .closing h2 {
+    margin-bottom: 12px;
+  }
+
+  .closing p {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.60);
+    margin: 0 auto 32px;
+    max-width: 460px;
+    line-height: 1.6;
+  }
+
+  .closing .btn-large {
+    width: auto;
+  }
+
+  @media (max-width: 880px) {
+    .hero {
+      padding: 64px 0 72px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .container {
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .closing {
+      padding: 64px 0 72px;
+    }
+
+    .step {
+      gap: 16px;
+    }
+
+    .ticket-price {
+      font-size: 48px;
+    }
+
+    .closing .btn-large,
+    .ticket .btn-large {
+      width: 100%;
+    }
+  }
+</style>
