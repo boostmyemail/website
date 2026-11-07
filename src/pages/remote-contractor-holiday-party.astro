@@ -4,103 +4,130 @@ import Layout from '../layouts/Layout.astro';
 const checkoutUrl = 'https://link.waveapps.com/n83we7-duhvrn';
 const ctaLabel = 'Get your ticket — $75';
 
-const facts = [
-  { stat: '$75', label: 'USD', detail: 'Price for one ticket.' },
-  { stat: '1', label: 'Per payment', detail: 'Each payment covers a single ticket.' },
-  { stat: 'Wave', label: 'Checkout', detail: 'Payment is completed on Wave, not on this site.' },
+const evening = [
+  'A two-hour block at Top Golf',
+  'Food and soft drinks, covered',
+  'A small gift',
+  'A night with friends',
 ];
 
-const steps = [
-  { n: '01', heading: 'Open checkout', body: 'Use Get your ticket — $75. It goes straight to the Wave payment page.' },
-  { n: '02', heading: 'Pay $75 USD on Wave', body: 'Wave collects the payment. This page does not ask for card details.' },
-  { n: '03', heading: 'One ticket per payment', body: 'That checkout is for one ticket. To buy another, complete checkout again.' },
+const included = [
+  {
+    title: 'Two hours at Top Golf',
+    body: 'Your ticket includes a two-hour block.',
+  },
+  {
+    title: 'Food and soft drinks',
+    body: 'Both are covered.',
+  },
+  {
+    title: 'A small gift',
+    body: 'A little gift is part of the night.',
+  },
+  {
+    title: 'Alcohol is not included',
+    body: 'If you want an alcoholic drink, that is at your own expense.',
+  },
 ];
 ---
 
 <Layout
   title="Remote/Contractor Holiday Party at Top Golf — Boost My Email"
-  description="A holiday gathering for remote workers and contractors at Top Golf. Tickets are $75 USD. One ticket per payment. Checkout is on Wave."
+  description="Have your own holiday party at Top Golf and spend it with friends. Especially for remote workers and contractors, and open to anybody. Date to be decided. Tickets are $75 USD."
 >
   <section class="hero">
     <div class="container hero-grid">
       <div class="copy">
-        <span class="eyebrow">Holiday gathering</span>
+        <span class="eyebrow">Holiday party</span>
         <h1>Remote/Contractor Holiday Party at Top Golf</h1>
-        <p class="subhead">
-          A holiday gathering for remote workers and contractors.
+        <p class="subhead">Have your own holiday party, and come spend it with us.</p>
+        <p class="date-note">
+          <strong>Date</strong>
+          <span>To be decided</span>
         </p>
         <p class="support">
-          Tickets are $75&nbsp;USD. One payment covers one ticket, and checkout is on Wave.
+          Holidays are best spent with people. Friends in the room, a little fun, and a memory that is yours.
+        </p>
+        <p class="support">
+          Remote workers and contractors often miss a holiday party because coworkers and clients are far away. You pay your own way for this one. It is a night with friends, a little fun, a small gift, and a holiday memory you make yourself.
         </p>
       </div>
 
-      <aside class="ticket" aria-label="Ticket">
-        <p class="ticket-kicker">Ticket</p>
-        <p class="ticket-price">$75 <span>USD</span></p>
-        <p class="ticket-note">One ticket per payment</p>
-        <a
-          href={checkoutUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="btn-primary btn-large"
-        >
-          {ctaLabel}
-        </a>
-        <p class="ticket-fine">
-          Opens Wave checkout. Card details are not collected on this page.
-        </p>
+      <aside class="evening" aria-label="The evening">
+        <p class="evening-kicker">The evening</p>
+        <ul>
+          {evening.map(item => (
+            <li>{item}</li>
+          ))}
+        </ul>
+        <p class="evening-date">Date to be decided</p>
       </aside>
     </div>
   </section>
 
   <section class="section">
+    <div class="container container-narrow">
+      <span class="eyebrow">Come as a friend</span>
+      <h2>A holiday memory, spent with people.</h2>
+      <p class="prose">
+        The good part of the season is being with other people. This night is a chance to do that on purpose: show up, spend the time together, and make a holiday memory of your own.
+      </p>
+      <p class="prose">
+        Have your own holiday party. Come spend it with us.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-tinted">
     <div class="container">
-      <span class="eyebrow">The ticket</span>
-      <h2>Price, quantity, and where you pay.</h2>
-      <div class="facts">
-        {facts.map(fact => (
-          <article class="fact">
-            <p class="fact-stat">{fact.stat}</p>
-            <p class="fact-label">{fact.label}</p>
-            <p class="fact-detail">{fact.detail}</p>
+      <span class="eyebrow">What’s included</span>
+      <h2>What the night covers.</h2>
+      <p class="section-intro">
+        Your ticket includes two hours at Top Golf, food, soft drinks, and a small gift.
+      </p>
+      <div class="included">
+        {included.map(item => (
+          <article class="included-card">
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <section class="section section-tinted">
-    <div class="container container-narrow">
-      <span class="eyebrow">Who it's for</span>
-      <h2>Remote workers and contractors.</h2>
-      <p class="prose">
-        This gathering is for people who work remotely or on contract.
-      </p>
-    </div>
-  </section>
-
   <section class="section">
     <div class="container">
-      <span class="eyebrow">Checkout</span>
-      <h2>How to get a ticket.</h2>
-      <div class="steps">
-        {steps.map(step => (
-          <div class="step">
-            <span class="step-num">{step.n}</span>
-            <div class="step-body">
-              <h3>{step.heading}</h3>
-              <p>{step.body}</p>
-            </div>
-          </div>
-        ))}
+      <span class="eyebrow">Who it’s for</span>
+      <h2>Made for this kind of work. Open to anybody.</h2>
+      <div class="welcome">
+        <article class="welcome-card welcome-card-accent">
+          <h3>Contractors and remote workers</h3>
+          <p>
+            Designed especially for you, when coworkers and clients are too far away for their party.
+          </p>
+        </article>
+        <article class="welcome-card">
+          <h3>Anybody who wants to come</h3>
+          <p>
+            Friends, a little fun, and a holiday memory. If you want to be there, you are welcome.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
   <section class="closing">
     <div class="container container-narrow">
-      <h2>Get your ticket.</h2>
-      <p>Checkout continues on Wave. $75&nbsp;USD, one ticket per payment.</p>
+      <span class="eyebrow eyebrow-center">Your ticket</span>
+      <h2>Come spend it with us.</h2>
+      <p class="date-note date-note-center">
+        <strong>Date</strong>
+        <span>To be decided</span>
+      </p>
+      <p class="closing-copy">
+        A ticket is $75&nbsp;USD, and you pay your own way. One payment covers one ticket. Checkout is on Wave, so your card details stay there.
+      </p>
       <a
         href={checkoutUrl}
         target="_blank"
@@ -109,6 +136,9 @@ const steps = [
       >
         {ctaLabel}
       </a>
+      <p class="fine">
+        Alcohol is not included. Opens Wave checkout.
+      </p>
     </div>
   </section>
 </Layout>
@@ -135,6 +165,10 @@ const steps = [
     margin-bottom: 16px;
   }
 
+  .eyebrow-center {
+    text-align: center;
+  }
+
   .hero {
     padding: 104px 0 96px;
     border-bottom: 1px solid var(--border-subtle);
@@ -152,68 +186,211 @@ const steps = [
     letter-spacing: -0.015em;
     line-height: 1.1;
     max-width: 680px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     text-wrap: balance;
   }
 
   .subhead {
-    font-size: 19px;
-    color: rgba(255, 255, 255, 0.65);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.82);
     max-width: 560px;
-    line-height: 1.55;
-    margin-bottom: 16px;
+    line-height: 1.45;
+    margin-bottom: 22px;
     text-wrap: pretty;
+  }
+
+  .date-note {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 28px;
+    padding: 6px 14px 6px 6px;
+    border-radius: var(--r-pill);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  .date-note strong {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent);
+    border-radius: var(--r-pill);
+    padding: 6px 10px;
+  }
+
+  .date-note-center {
+    margin-bottom: 20px;
   }
 
   .support {
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.55);
-    max-width: 520px;
-    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+    text-wrap: pretty;
   }
 
-  .ticket {
+  .support:last-child {
+    margin-bottom: 0;
+  }
+
+  .evening {
     background: rgba(161, 1, 0, 0.12);
     border: 1px solid rgba(161, 1, 0, 0.40);
     border-radius: var(--r-xl);
-    padding: 28px 24px 24px;
+    padding: 28px 24px 22px;
     box-shadow: var(--shadow-card);
   }
 
-  .ticket-kicker {
+  .evening-kicker,
+  .evening-date {
     font-size: 11px;
     font-weight: 500;
     letter-spacing: 0.07em;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.55);
-    margin-bottom: 12px;
   }
 
-  .ticket-price {
-    font-family: var(--font-heading);
-    font-size: 56px;
-    font-weight: 500;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    color: #fff;
-    margin-bottom: 12px;
+  .evening-kicker {
+    margin-bottom: 18px;
   }
 
-  .ticket-price span {
+  .evening ul {
+    list-style: none;
+    margin: 0 0 22px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .evening li {
+    position: relative;
+    padding-left: 18px;
     font-size: 16px;
-    letter-spacing: 0.04em;
-    color: rgba(255, 255, 255, 0.55);
-    font-weight: 500;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.86);
   }
 
-  .ticket-note {
+  .evening li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .evening-date {
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.05em;
+  }
+
+  .section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section-tinted {
+    background: rgba(255, 255, 255, 0.025);
+  }
+
+  .section h2,
+  .closing h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    letter-spacing: -0.015em;
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+
+  .section-intro {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.60);
+    max-width: 560px;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  .prose {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.65;
+    margin-bottom: 16px;
+    text-wrap: pretty;
+  }
+
+  .prose:last-child {
+    margin-bottom: 0;
+  }
+
+  .included,
+  .welcome {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .included-card,
+  .welcome-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--r-lg);
+    padding: 28px 24px;
+  }
+
+  .included-card h3,
+  .welcome-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .included-card p,
+  .welcome-card p {
     font-size: 15px;
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 24px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.6;
+    margin: 0;
   }
 
-  .ticket-fine {
-    margin-top: 14px;
+  .welcome-card-accent {
+    background: rgba(161, 1, 0, 0.12);
+    border-color: rgba(161, 1, 0, 0.35);
+  }
+
+  .closing {
+    background: rgba(161, 1, 0, 0.10);
+    border-top: 1px solid rgba(161, 1, 0, 0.25);
+    padding: 88px 0 96px;
+    text-align: center;
+  }
+
+  .closing h2 {
+    margin-bottom: 16px;
+  }
+
+  .closing-copy {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.68);
+    margin: 0 auto 28px;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .fine {
+    margin: 16px auto 0;
+    max-width: 420px;
     font-size: 13px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.45);
@@ -245,136 +422,8 @@ const steps = [
   }
 
   .btn-large {
-    padding: 16px 28px;
+    padding: 16px 32px;
     font-size: 16px;
-    width: 100%;
-  }
-
-  .section {
-    padding: 88px 0;
-    border-bottom: 1px solid var(--border-subtle);
-  }
-
-  .section-tinted {
-    background: rgba(255, 255, 255, 0.025);
-  }
-
-  .section h2,
-  .closing h2 {
-    font-size: clamp(26px, 3vw, 36px);
-    letter-spacing: -0.015em;
-    margin-bottom: 28px;
-    text-wrap: balance;
-  }
-
-  .facts {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-  }
-
-  .fact {
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: var(--r-lg);
-    padding: 28px 24px;
-  }
-
-  .fact-stat {
-    font-family: var(--font-heading);
-    font-size: 40px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    color: #fff;
-    margin-bottom: 10px;
-  }
-
-  .fact-label {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.45);
-    margin-bottom: 12px;
-  }
-
-  .fact-detail {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.65);
-    line-height: 1.55;
-  }
-
-  .prose {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.65);
-    line-height: 1.65;
-    max-width: 560px;
-  }
-
-  .steps {
-    display: flex;
-    flex-direction: column;
-    margin-top: 8px;
-  }
-
-  .step {
-    display: flex;
-    gap: 32px;
-    align-items: flex-start;
-    padding: 28px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .step:first-child {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
-
-  .step-num {
-    font-family: var(--font-heading);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.04em;
-    flex-shrink: 0;
-    width: 28px;
-    padding-top: 3px;
-  }
-
-  .step-body h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    letter-spacing: -0.005em;
-  }
-
-  .step-body p {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.60);
-    line-height: 1.6;
-    max-width: 640px;
-  }
-
-  .closing {
-    background: rgba(161, 1, 0, 0.10);
-    border-top: 1px solid rgba(161, 1, 0, 0.25);
-    padding: 88px 0 96px;
-    text-align: center;
-  }
-
-  .closing h2 {
-    margin-bottom: 12px;
-  }
-
-  .closing p {
-    font-size: 17px;
-    color: rgba(255, 255, 255, 0.60);
-    margin: 0 auto 32px;
-    max-width: 460px;
-    line-height: 1.6;
-  }
-
-  .closing .btn-large {
-    width: auto;
   }
 
   @media (max-width: 880px) {
@@ -382,9 +431,11 @@ const steps = [
       padding: 64px 0 72px;
     }
 
-    .hero-grid {
+    .hero-grid,
+    .included,
+    .welcome {
       grid-template-columns: 1fr;
-      gap: 40px;
+      gap: 28px;
     }
   }
 
@@ -401,16 +452,11 @@ const steps = [
       padding: 64px 0 72px;
     }
 
-    .step {
-      gap: 16px;
+    .date-note {
+      max-width: 100%;
     }
 
-    .ticket-price {
-      font-size: 48px;
-    }
-
-    .closing .btn-large,
-    .ticket .btn-large {
+    .btn-large {
       width: 100%;
     }
   }
