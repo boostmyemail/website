@@ -3,7 +3,9 @@ import Layout from '../layouts/Layout.astro';
 
 const checkoutUrl = 'https://link.waveapps.com/n83we7-duhvrn';
 const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
-const eventWhere = 'To be announced';
+const eventWhere = 'Topgolf Salt Lake City (Midvale)';
+const eventAddress = '920 Jordan River Blvd, Midvale, UT 84047';
+const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920+Jordan+River+Blvd+Midvale+UT+84047';
 ---
 
 <Layout
@@ -21,10 +23,13 @@ const eventWhere = 'To be announced';
               <strong>Date</strong>
               <span>{eventWhen}</span>
             </p>
-            <p class="date-note">
-              <strong>Location</strong>
-              <span>{eventWhere}</span>
-            </p>
+            <div class="place">
+              <p class="date-note">
+                <strong>Location</strong>
+                <span>{eventWhere}</span>
+              </p>
+              <a class="address" href={eventMapUrl} target="_blank" rel="noopener noreferrer">{eventAddress}</a>
+            </div>
           </div>
           <p class="support">
             Friends, golf balls flying in most likely the wrong direction, and a holiday memory you didn't think you'd get this year.
@@ -86,10 +91,13 @@ const eventWhere = 'To be announced';
           <strong>Date</strong>
           <span>{eventWhen}</span>
         </p>
-        <p class="date-note">
-          <strong>Location</strong>
-          <span>{eventWhere}</span>
-        </p>
+        <div class="place">
+          <p class="date-note">
+            <strong>Location</strong>
+            <span>{eventWhere}</span>
+          </p>
+          <a class="address" href={eventMapUrl} target="_blank" rel="noopener noreferrer">{eventAddress}</a>
+        </div>
       </div>
       <p class="closing-copy">
         Tickets are $75&nbsp;USD. You pay your own way, and one payment covers one ticket, so bring a friend and have them grab their own. Checkout runs on Wave, so your card details stay with Wave.
@@ -192,6 +200,32 @@ const eventWhere = 'To be announced';
   .facts-center {
     justify-content: center;
     margin-bottom: 20px;
+  }
+
+  .place {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    max-width: 100%;
+  }
+
+  .facts-center .place {
+    align-items: center;
+  }
+
+  .address {
+    font-size: 13px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: rgba(255, 255, 255, 0.28);
+  }
+
+  .address:hover {
+    color: #fff;
+    text-decoration-color: var(--accent);
   }
 
   .date-note {
