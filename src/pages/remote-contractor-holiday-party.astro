@@ -2,56 +2,29 @@
 import Layout from '../layouts/Layout.astro';
 
 const checkoutUrl = 'https://link.waveapps.com/n83we7-duhvrn';
-
-const included = [
-  {
-    title: 'Two hours at Top Golf',
-    body: 'A full two-hour block. Plenty of time to find your swing, lose it, and blame the club.',
-  },
-  {
-    title: 'Food and soft drinks',
-    body: 'Covered. Come hungry.',
-  },
-  {
-    title: 'A small gift',
-    body: 'A little something to take home. No white elephant drama required.',
-  },
-  {
-    title: "Alcohol's on your own",
-    body: "Want something stronger than a Sprite? The bar's right there. That part's on your tab.",
-  },
-];
+const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
 ---
 
 <Layout
-  title="Contractors Need a Holiday Party Too | Top Golf with Boost My Email"
-  description="No office party? Same. Join remote workers, contractors, and anyone else who wants in for two hours of Top Golf, food, and a small gift. Tickets are $75 USD. Date coming soon."
+  title="Remote marketers need a holiday party too | Top Golf with Boost My Email"
+  description={`No office party? Same. Join remote workers, contractors, and anyone else who wants in for two hours of Top Golf, food, and a small gift. Tickets are $75 USD. ${eventWhen}.`}
 >
   <section class="hero">
     <div class="container">
-      <figure class="party-photo">
-        <img
-          src={`${import.meta.env.BASE_URL}assets/topgolf-party.png`}
-          alt="Friends at a Top Golf night party"
-          width="480"
-          height="380"
-        />
-      </figure>
-
       <div class="hero-grid">
         <div class="copy">
           <span class="eyebrow">Holiday party (finally)</span>
-          <h1>Contractors Need a Holiday Party Too</h1>
-          <p class="subhead">You're not alone. Come have fun with a bunch of other marketers.</p>
+          <h1>Remote marketers need a holiday party too</h1>
+          <p class="subhead">You're not alone. Come have fun with a bunch of us.</p>
           <p class="date-note">
             <strong>Date</strong>
-            <span>To be decided (soon, we promise)</span>
+            <span>{eventWhen}</span>
           </p>
           <p class="support">
-            That photo up there? That's the plan. Friends, golf balls flying in roughly the right direction, and a holiday memory that doesn't happen on a Zoom call.
+            Friends, golf balls flying in most likely the wrong direction, and a holiday memory you didn't think you'd get this year.
           </p>
           <p class="support">
-            When you work remote or on contract, the holiday party kind of skips you. Your coworkers are three time zones away and your clients are celebrating with their own people. So we're throwing our own. You buy your own ticket, show up, swing badly, eat well, and take home a little gift.
+            When you work remote, the holiday party kind of skips you. So we're throwing our own. You buy your own ticket, show up, swing badly, eat well, and take home a little gift.
           </p>
           <a
             href={checkoutUrl}
@@ -63,21 +36,24 @@ const included = [
           </a>
         </div>
 
-        <aside class="included-panel" aria-labelledby="included-heading">
-          <span class="eyebrow">What's included</span>
-          <h2 id="included-heading">Here's what $75 gets you.</h2>
-          <p class="included-intro">
-            Two hours of Top Golf, food, soft drinks, and a small gift. Basically everything except the eggnog with a kick.
-          </p>
-          <div class="included">
-            {included.map(item => (
-              <article class="included-card">
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            ))}
-          </div>
-        </aside>
+        <div class="hero-side">
+          <aside class="included-panel" aria-labelledby="included-heading">
+            <span class="eyebrow">What's included</span>
+            <h2 id="included-heading">Here's what $75 gets you.</h2>
+            <ul class="included-list">
+              <li>2 hours of Top Golf, food and soft drinks included. You'll also get a small gift.</li>
+            </ul>
+            <p class="alcohol-note">Alcohol's on your own.</p>
+          </aside>
+          <figure class="party-photo">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/topgolf-party.png`}
+              alt="Friends at a Top Golf night party"
+              width="480"
+              height="380"
+            />
+          </figure>
+        </div>
       </div>
     </div>
   </section>
@@ -87,8 +63,9 @@ const included = [
       <span class="eyebrow">Who it's for</span>
       <h2>Remote workers, contractors, and anyone who wants in.</h2>
       <p class="prose">
-        If your "office" is a kitchen table and your "coworkers" are a Slack channel, this one's for you. Freelancers, contractors, remote folks, and honestly anybody who wants a fun night out. No badge, no org chart, no awkward speech from the CEO. Everyone's welcome.
+        If your office is the kitchen table and your coworkers are a Slack channel, this one's for you. Freelancers, contractors, remote folks, and honestly anybody who wants a fun night out. No badge, no org chart, and no awkward speech from the CEO. Oh, and no sales pitch.
       </p>
+      <p class="prose">Everyone's welcome.</p>
     </div>
   </section>
 
@@ -98,7 +75,7 @@ const included = [
       <h2>Come party with us.</h2>
       <p class="date-note date-note-center">
         <strong>Date</strong>
-        <span>To be decided</span>
+            <span>{eventWhen}</span>
       </p>
       <p class="closing-copy">
         Tickets are $75&nbsp;USD. You pay your own way, and one payment covers one ticket, so bring a friend and have them grab their own. Checkout runs on Wave, so your card details stay with Wave.
@@ -111,8 +88,6 @@ const included = [
       >
         Get your ticket ($75)
       </a>
-      <p class="fine">Opens Wave checkout.</p>
-      <p class="fine">Alcohol's on your own. Golf, food, and good company are already in your ticket.</p>
     </div>
   </section>
 </Layout>
@@ -128,8 +103,15 @@ const included = [
     max-width: 720px;
   }
 
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+  }
+
   .party-photo {
-    margin: 0 0 40px;
+    margin: 0;
     max-width: 480px;
   }
 
@@ -186,19 +168,20 @@ const included = [
   }
 
   .date-note {
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 10px;
+    width: fit-content;
+    max-width: 100%;
     margin: 0 0 28px;
     padding: 6px 14px 6px 6px;
-    border-radius: var(--r-pill);
+    border-radius: 14px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.16);
     color: #fff;
     font-size: 14px;
-    line-height: 1.3;
-    max-width: 100%;
+    line-height: 1.4;
   }
 
   .date-note strong {
@@ -212,8 +195,15 @@ const included = [
     padding: 6px 10px;
   }
 
+  .date-note span {
+    padding-top: 4px;
+  }
+
   .date-note-center {
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 20px;
+    text-align: left;
   }
 
   .support {
@@ -244,41 +234,29 @@ const included = [
   .included-panel h2 {
     font-size: clamp(22px, 2vw, 28px);
     letter-spacing: -0.015em;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     text-wrap: balance;
   }
 
-  .included-intro {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.68);
-    line-height: 1.55;
-    margin-bottom: 20px;
-  }
-
-  .included {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .included-card {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    border-radius: var(--r-lg);
-    padding: 14px 16px 12px;
-  }
-
-  .included-card h3 {
-    font-size: 16px;
-    margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-
-  .included-card p {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.68);
-    line-height: 1.5;
+  .included-list {
     margin: 0;
+    padding-left: 18px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .included-list li::marker {
+    color: var(--accent);
+  }
+
+  .alcohol-note {
+    margin: 16px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.62);
   }
 
   .section {
@@ -302,6 +280,10 @@ const included = [
     text-wrap: pretty;
   }
 
+  .prose + .prose {
+    margin-top: 16px;
+  }
+
   .closing {
     background: rgba(161, 1, 0, 0.10);
     border-top: 1px solid rgba(161, 1, 0, 0.25);
@@ -319,14 +301,6 @@ const included = [
     margin: 0 auto 28px;
     max-width: 520px;
     line-height: 1.6;
-  }
-
-  .fine {
-    margin: 16px auto 0;
-    max-width: 460px;
-    font-size: 13px;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.45);
   }
 
   .btn-primary {
