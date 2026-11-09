@@ -1,0 +1,399 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const checkoutUrl = 'https://link.waveapps.com/n83we7-duhvrn';
+const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
+const eventWhere = 'Topgolf Salt Lake City';
+const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920+Jordan+River+Blvd+Midvale+UT+84047';
+---
+
+<Layout
+  title="Remote marketers need a holiday party too | Top Golf with Boost My Email"
+  description={`No office party? Same. Join remote workers, contractors, and anyone else who wants in for two hours of Top Golf, food, and a small gift. Tickets are $75 USD. ${eventWhen}.`}
+>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="copy">
+          <h1>Remote marketers need a holiday party too</h1>
+          <p class="subhead">You're not alone. Come have fun with a bunch of us.</p>
+          <div class="facts">
+            <p class="date-note">
+              <strong>Date</strong>
+              <span>{eventWhen}</span>
+            </p>
+            <a class="date-note" href={eventMapUrl} target="_blank" rel="noopener noreferrer">
+              <strong>Location</strong>
+              <span>{eventWhere}</span>
+            </a>
+          </div>
+          <p class="support">
+            Friends, golf balls flying in most likely the wrong direction, and a holiday memory you didn't think you'd get this year.
+          </p>
+          <p class="support">
+            When you work remote, the holiday party kind of skips you. So we're throwing our own. You buy your own ticket, show up, swing badly, eat well, and take home a little gift.
+          </p>
+          <a
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary btn-large"
+          >
+            Grab your ticket ($75)
+          </a>
+        </div>
+
+        <div class="hero-side">
+          <aside class="included-panel" aria-labelledby="included-heading">
+            <span class="eyebrow">What's included</span>
+            <h2 id="included-heading">Here's what $75 gets you.</h2>
+            <ul class="included-list">
+              <li>2 hours of Top Golf</li>
+              <li>Food and soft drinks included</li>
+              <li>A small gift</li>
+            </ul>
+            <p class="alcohol-note">Alcohol's on your own.</p>
+          </aside>
+          <figure class="party-photo">
+            <img
+              src={`${import.meta.env.BASE_URL}assets/topgolf-party.png`}
+              alt="Friends at a Top Golf night party"
+              width="480"
+              height="380"
+            />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-narrow">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Remote workers, contractors, and anyone who wants in.</h2>
+      <p class="prose">
+        If your office is the kitchen table and your coworkers are a Slack channel, this one's for you. Freelancers, contractors, remote folks, and honestly anybody who wants a fun night out. No badge, no org chart, and no awkward speech from the CEO. Oh, and no sales pitch.
+      </p>
+      <p class="prose">Everyone's welcome.</p>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="container container-narrow">
+      <span class="eyebrow eyebrow-center">Your ticket</span>
+      <h2>Come party with us.</h2>
+      <div class="facts facts-center">
+        <p class="date-note">
+          <strong>Date</strong>
+          <span>{eventWhen}</span>
+        </p>
+        <a class="date-note" href={eventMapUrl} target="_blank" rel="noopener noreferrer">
+          <strong>Location</strong>
+          <span>{eventWhere}</span>
+        </a>
+      </div>
+      <p class="closing-copy">
+        Tickets are $75&nbsp;USD. You pay your own way, and one payment covers one ticket, so bring a friend and have them grab their own. Checkout runs on Wave, so your card details stay with Wave.
+      </p>
+      <a
+        href={checkoutUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary btn-large"
+      >
+        Get your ticket ($75)
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .container {
+    max-width: var(--width-page);
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .container-narrow {
+    max-width: 720px;
+  }
+
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+  }
+
+  .party-photo {
+    margin: 0;
+    max-width: 480px;
+  }
+
+  .party-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--r-xl);
+  }
+
+  .eyebrow {
+    display: block;
+    font-family: var(--font-body);
+    font-size: var(--text-label);
+    font-weight: var(--fw-medium);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 16px;
+  }
+
+  .eyebrow-center {
+    text-align: center;
+  }
+
+  .hero {
+    padding: 48px 0 96px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 440px);
+    align-items: start;
+    gap: 48px;
+  }
+
+  h1 {
+    font-size: clamp(36px, 4.6vw, 58px);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    max-width: 680px;
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+
+  .subhead {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 560px;
+    line-height: 1.45;
+    margin-bottom: 22px;
+    text-wrap: pretty;
+  }
+
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 28px;
+  }
+
+  .facts-center {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .date-note {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 0;
+    padding: 6px 14px 6px 6px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .date-note strong {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent);
+    border-radius: var(--r-pill);
+    padding: 6px 10px;
+  }
+
+  a.date-note,
+  a.date-note:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .date-note span {
+    padding-top: 4px;
+  }
+
+  .support {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.65);
+    max-width: 560px;
+    line-height: 1.65;
+    margin-bottom: 16px;
+    text-wrap: pretty;
+  }
+
+  .copy .btn-large {
+    margin-top: 12px;
+  }
+
+  .included-panel {
+    background: rgba(161, 1, 0, 0.12);
+    border: 1px solid rgba(161, 1, 0, 0.55);
+    border-radius: var(--r-xl);
+    padding: 28px 24px 24px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .included-panel .eyebrow {
+    margin-bottom: 12px;
+  }
+
+  .included-panel h2 {
+    font-size: clamp(22px, 2vw, 28px);
+    letter-spacing: -0.015em;
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+
+  .included-list {
+    margin: 0;
+    padding-left: 18px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  .included-list li + li {
+    margin-top: 8px;
+  }
+
+  .included-list li::marker {
+    color: var(--accent);
+  }
+
+  .alcohol-note {
+    margin: 16px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .section {
+    padding: 88px 0;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section h2,
+  .closing h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    letter-spacing: -0.015em;
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+
+  .prose {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.68);
+    line-height: 1.65;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  .prose + .prose {
+    margin-top: 16px;
+  }
+
+  .closing {
+    background: rgba(161, 1, 0, 0.10);
+    border-top: 1px solid rgba(161, 1, 0, 0.25);
+    padding: 88px 0 96px;
+    text-align: center;
+  }
+
+  .closing h2 {
+    margin-bottom: 16px;
+  }
+
+  .closing-copy {
+    font-size: 17px;
+    color: rgba(255, 255, 255, 0.68);
+    margin: 0 auto 28px;
+    max-width: 520px;
+    line-height: 1.6;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--r-pill);
+    padding: 12px 24px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background .15s ease, transform .1s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    color: #fff;
+  }
+
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+
+  .btn-large {
+    padding: 16px 32px;
+    font-size: 16px;
+  }
+
+  @media (max-width: 880px) {
+    .hero {
+      padding: 32px 0 72px;
+    }
+
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: 36px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .container {
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .closing {
+      padding: 64px 0 72px;
+    }
+
+    .date-note {
+      max-width: 100%;
+    }
+
+    .btn-large {
+      width: 100%;
+    }
+  }
+</style>
