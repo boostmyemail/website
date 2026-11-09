@@ -43,38 +43,38 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
           </a>
         </div>
 
-        <div class="hero-side">
-          <aside class="included-panel" aria-labelledby="included-heading">
-            <span class="eyebrow">What's included</span>
-            <h2 id="included-heading">Here's what $75 gets you.</h2>
-            <ul class="included-list">
-              <li>2 hours of Top Golf</li>
-              <li>Food and soft drinks included</li>
-              <li>A small gift</li>
-            </ul>
-            <p class="alcohol-note">Alcohol's on your own.</p>
-          </aside>
-          <figure class="party-photo">
-            <img
-              src={`${import.meta.env.BASE_URL}assets/topgolf-party.png`}
-              alt="Friends at a Top Golf night party"
-              width="480"
-              height="380"
-            />
-          </figure>
-        </div>
+        <aside class="included-panel" aria-labelledby="included-heading">
+          <span class="eyebrow">What's included</span>
+          <h2 id="included-heading">Here's what $75 gets you.</h2>
+          <ul class="included-list">
+            <li>2 hours of Top Golf</li>
+            <li>Food and soft drinks included</li>
+            <li>A small gift</li>
+          </ul>
+          <p class="alcohol-note">Alcohol's on your own.</p>
+        </aside>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <div class="container container-narrow">
-      <span class="eyebrow">Who it's for</span>
-      <h2>Remote workers, contractors, and anyone who wants in.</h2>
-      <p class="prose">
-        If your office is the kitchen table and your coworkers are a Slack channel, this one's for you. Freelancers, contractors, remote folks, and honestly anybody who wants a fun night out. No badge, no org chart, and no awkward speech from the CEO. Oh, and no sales pitch.
-      </p>
-      <p class="prose">Everyone's welcome.</p>
+    <div class="container who">
+      <div class="who-copy">
+        <span class="eyebrow">Who it's for</span>
+        <h2>Remote workers, contractors, and anyone who wants in.</h2>
+        <p class="prose">
+          If your office is the kitchen table and your coworkers are a Slack channel, this one's for you. Freelancers, contractors, remote folks, and honestly anybody who wants a fun night out. No badge, no org chart, and no awkward speech from the CEO. Oh, and no sales pitch.
+        </p>
+        <p class="prose">Everyone's welcome.</p>
+      </div>
+      <figure class="party-photo">
+        <img
+          src={`${import.meta.env.BASE_URL}assets/topgolf-party.png`}
+          alt="Friends at a Top Golf night party"
+          width="480"
+          height="380"
+        />
+      </figure>
     </div>
   </section>
 
@@ -118,11 +118,11 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
     max-width: 720px;
   }
 
-  .hero-side {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    min-width: 0;
+  .who {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 480px);
+    align-items: center;
+    gap: 48px;
   }
 
   .party-photo {
@@ -369,7 +369,8 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
       padding: 32px 0 72px;
     }
 
-    .hero-grid {
+    .hero-grid,
+    .who {
       grid-template-columns: 1fr;
       gap: 36px;
     }
