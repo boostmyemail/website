@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 const checkoutUrl = 'https://link.waveapps.com/n83we7-duhvrn';
 const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
+const eventWhere = 'To be announced';
 ---
 
 <Layout
@@ -13,13 +14,18 @@ const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
     <div class="container">
       <div class="hero-grid">
         <div class="copy">
-          <span class="eyebrow">Holiday party (finally)</span>
           <h1>Remote marketers need a holiday party too</h1>
           <p class="subhead">You're not alone. Come have fun with a bunch of us.</p>
-          <p class="date-note">
-            <strong>Date</strong>
-            <span>{eventWhen}</span>
-          </p>
+          <div class="facts">
+            <p class="date-note">
+              <strong>Date</strong>
+              <span>{eventWhen}</span>
+            </p>
+            <p class="date-note">
+              <strong>Location</strong>
+              <span>{eventWhere}</span>
+            </p>
+          </div>
           <p class="support">
             Friends, golf balls flying in most likely the wrong direction, and a holiday memory you didn't think you'd get this year.
           </p>
@@ -41,7 +47,9 @@ const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
             <span class="eyebrow">What's included</span>
             <h2 id="included-heading">Here's what $75 gets you.</h2>
             <ul class="included-list">
-              <li>2 hours of Top Golf, food and soft drinks included. You'll also get a small gift.</li>
+              <li>2 hours of Top Golf</li>
+              <li>Food and soft drinks included</li>
+              <li>A small gift</li>
             </ul>
             <p class="alcohol-note">Alcohol's on your own.</p>
           </aside>
@@ -73,10 +81,16 @@ const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
     <div class="container container-narrow">
       <span class="eyebrow eyebrow-center">Your ticket</span>
       <h2>Come party with us.</h2>
-      <p class="date-note date-note-center">
-        <strong>Date</strong>
-            <span>{eventWhen}</span>
-      </p>
+      <div class="facts facts-center">
+        <p class="date-note">
+          <strong>Date</strong>
+          <span>{eventWhen}</span>
+        </p>
+        <p class="date-note">
+          <strong>Location</strong>
+          <span>{eventWhere}</span>
+        </p>
+      </div>
       <p class="closing-copy">
         Tickets are $75&nbsp;USD. You pay your own way, and one payment covers one ticket, so bring a friend and have them grab their own. Checkout runs on Wave, so your card details stay with Wave.
       </p>
@@ -167,6 +181,19 @@ const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
     text-wrap: pretty;
   }
 
+  .facts {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0 0 28px;
+  }
+
+  .facts-center {
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
   .date-note {
     display: flex;
     align-items: flex-start;
@@ -174,7 +201,7 @@ const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
     gap: 10px;
     width: fit-content;
     max-width: 100%;
-    margin: 0 0 28px;
+    margin: 0;
     padding: 6px 14px 6px 6px;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.06);
@@ -197,13 +224,6 @@ const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
 
   .date-note span {
     padding-top: 4px;
-  }
-
-  .date-note-center {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    text-align: left;
   }
 
   .support {
@@ -244,6 +264,10 @@ const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
     color: rgba(255, 255, 255, 0.86);
     font-size: 15px;
     line-height: 1.55;
+  }
+
+  .included-list li + li {
+    margin-top: 8px;
   }
 
   .included-list li::marker {
