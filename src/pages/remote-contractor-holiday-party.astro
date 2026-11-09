@@ -2,74 +2,92 @@
 import Layout from '../layouts/Layout.astro';
 
 const checkoutUrl = 'https://link.waveapps.com/n83we7-duhvrn';
-const ctaLabel = 'Get your ticket — $75';
 
 const included = [
   {
     title: 'Two hours at Top Golf',
-    body: 'Your ticket includes a two-hour block.',
+    body: 'A full two-hour block. Plenty of time to find your swing, lose it, and blame the club.',
   },
   {
     title: 'Food and soft drinks',
-    body: 'Both are covered.',
+    body: 'Covered. Come hungry.',
   },
   {
     title: 'A small gift',
-    body: 'A little gift is part of the night.',
+    body: 'A little something to take home. No white elephant drama required.',
   },
   {
-    title: 'Alcohol is not included',
-    body: 'If you want an alcoholic drink, that is at your own expense.',
+    title: "Alcohol's on your own",
+    body: "Want something stronger than a Sprite? The bar's right there. That part's on your tab.",
   },
 ];
 ---
 
 <Layout
-  title="Remote/Contractor Holiday Party at Top Golf — Boost My Email"
-  description="Have your own holiday party at Top Golf and spend it with friends. Especially for remote workers and contractors, and open to anybody. Date to be decided. Tickets are $75 USD."
+  title="Contractors Need a Holiday Party Too | Top Golf with Boost My Email"
+  description="No office party? Same. Join remote workers, contractors, and anyone else who wants in for two hours of Top Golf, food, and a small gift. Tickets are $75 USD. Date coming soon."
 >
   <section class="hero">
-    <div class="container hero-grid">
-      <div class="copy">
-        <span class="eyebrow">Holiday party</span>
-        <h1>Remote/Contractor Holiday Party at Top Golf</h1>
-        <p class="subhead">Have your own holiday party, and come spend it with us.</p>
-        <p class="date-note">
-          <strong>Date</strong>
-          <span>To be decided</span>
-        </p>
-        <p class="support">
-          Holidays are best spent with people. Friends in the room, a little fun, and a memory that is yours.
-        </p>
-        <p class="support">
-          Remote workers and contractors often miss a holiday party because coworkers and clients are far away. You pay your own way for this one. It is a night with friends, a little fun, a small gift, and a holiday memory you make yourself.
-        </p>
-      </div>
+    <div class="container">
+      <figure class="party-photo">
+        <img
+          src={`${import.meta.env.BASE_URL}assets/topgolf-party.png`}
+          alt="Friends at a Top Golf night party"
+          width="480"
+          height="380"
+        />
+      </figure>
 
-      <aside class="included-panel" aria-labelledby="included-heading">
-        <span class="eyebrow">What’s included</span>
-        <h2 id="included-heading">What the night covers.</h2>
-        <p class="included-intro">
-          Your ticket includes two hours at Top Golf, food, soft drinks, and a small gift.
-        </p>
-        <div class="included">
-          {included.map(item => (
-            <article class="included-card">
-              <h3>{item.title}</h3>
-              <p>{item.body}</p>
-            </article>
-          ))}
+      <div class="hero-grid">
+        <div class="copy">
+          <span class="eyebrow">Holiday party (finally)</span>
+          <h1>Contractors Need a Holiday Party Too</h1>
+          <p class="subhead">You're not alone. Come have fun with a bunch of other marketers.</p>
+          <p class="date-note">
+            <strong>Date</strong>
+            <span>To be decided (soon, we promise)</span>
+          </p>
+          <p class="support">
+            That photo up there? That's the plan. Friends, golf balls flying in roughly the right direction, and a holiday memory that doesn't happen on a Zoom call.
+          </p>
+          <p class="support">
+            When you work remote or on contract, the holiday party kind of skips you. Your coworkers are three time zones away and your clients are celebrating with their own people. So we're throwing our own. You buy your own ticket, show up, swing badly, eat well, and take home a little gift.
+          </p>
+          <a
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary btn-large"
+          >
+            Grab your ticket ($75)
+          </a>
         </div>
-      </aside>
+
+        <aside class="included-panel" aria-labelledby="included-heading">
+          <span class="eyebrow">What's included</span>
+          <h2 id="included-heading">Here's what $75 gets you.</h2>
+          <p class="included-intro">
+            Two hours of Top Golf, food, soft drinks, and a small gift. Basically everything except the eggnog with a kick.
+          </p>
+          <div class="included">
+            {included.map(item => (
+              <article class="included-card">
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container container-narrow">
-      <span class="eyebrow">Who it’s for</span>
-      <h2>Remote workers, contractors, and anybody who wants to come.</h2>
+      <span class="eyebrow">Who it's for</span>
+      <h2>Remote workers, contractors, and anyone who wants in.</h2>
       <p class="prose">
-        Come spend an evening with us if you work remotely or on contract, or if you simply want to be there. Everyone is welcome.
+        If your "office" is a kitchen table and your "coworkers" are a Slack channel, this one's for you. Freelancers, contractors, remote folks, and honestly anybody who wants a fun night out. No badge, no org chart, no awkward speech from the CEO. Everyone's welcome.
       </p>
     </div>
   </section>
@@ -77,13 +95,13 @@ const included = [
   <section class="closing">
     <div class="container container-narrow">
       <span class="eyebrow eyebrow-center">Your ticket</span>
-      <h2>Come spend it with us.</h2>
+      <h2>Come party with us.</h2>
       <p class="date-note date-note-center">
         <strong>Date</strong>
         <span>To be decided</span>
       </p>
       <p class="closing-copy">
-        A ticket is $75&nbsp;USD, and you pay your own way. One payment covers one ticket. Checkout is on Wave, so your card details stay there.
+        Tickets are $75&nbsp;USD. You pay your own way, and one payment covers one ticket, so bring a friend and have them grab their own. Checkout runs on Wave, so your card details stay with Wave.
       </p>
       <a
         href={checkoutUrl}
@@ -91,9 +109,10 @@ const included = [
         rel="noopener noreferrer"
         class="btn-primary btn-large"
       >
-        {ctaLabel}
+        Get your ticket ($75)
       </a>
       <p class="fine">Opens Wave checkout.</p>
+      <p class="fine">Alcohol's on your own. Golf, food, and good company are already in your ticket.</p>
     </div>
   </section>
 </Layout>
@@ -107,6 +126,18 @@ const included = [
 
   .container-narrow {
     max-width: 720px;
+  }
+
+  .party-photo {
+    margin: 0 0 40px;
+    max-width: 480px;
+  }
+
+  .party-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--r-xl);
   }
 
   .eyebrow {
@@ -125,7 +156,7 @@ const included = [
   }
 
   .hero {
-    padding: 104px 0 96px;
+    padding: 48px 0 96px;
     border-bottom: 1px solid var(--border-subtle);
   }
 
@@ -157,6 +188,7 @@ const included = [
   .date-note {
     display: inline-flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 10px;
     margin: 0 0 28px;
     padding: 6px 14px 6px 6px;
@@ -165,7 +197,8 @@ const included = [
     border: 1px solid rgba(255, 255, 255, 0.16);
     color: #fff;
     font-size: 14px;
-    line-height: 1.2;
+    line-height: 1.3;
+    max-width: 100%;
   }
 
   .date-note strong {
@@ -192,8 +225,8 @@ const included = [
     text-wrap: pretty;
   }
 
-  .support:last-child {
-    margin-bottom: 0;
+  .copy .btn-large {
+    margin-top: 12px;
   }
 
   .included-panel {
@@ -290,7 +323,7 @@ const included = [
 
   .fine {
     margin: 16px auto 0;
-    max-width: 420px;
+    max-width: 460px;
     font-size: 13px;
     line-height: 1.5;
     color: rgba(255, 255, 255, 0.45);
@@ -328,7 +361,7 @@ const included = [
 
   @media (max-width: 880px) {
     .hero {
-      padding: 64px 0 72px;
+      padding: 32px 0 72px;
     }
 
     .hero-grid {
