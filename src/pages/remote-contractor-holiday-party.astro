@@ -17,16 +17,6 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
         <div class="copy">
           <h1>Remote marketers need a holiday party too</h1>
           <p class="subhead">You're not alone. Come have fun with a bunch of us.</p>
-          <div class="facts">
-            <p class="date-note">
-              <strong>Date</strong>
-              <span>{eventWhen}</span>
-            </p>
-            <a class="date-note" href={eventMapUrl} target="_blank" rel="noopener noreferrer">
-              <strong>Location</strong>
-              <span>{eventWhere}</span>
-            </a>
-          </div>
           <p class="support">
             Friends, golf balls flying in most likely the wrong direction, and a holiday memory you didn't think you'd get this year.
           </p>
@@ -43,15 +33,27 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
           </a>
         </div>
 
-        <aside class="included-panel" aria-labelledby="included-heading">
-          <span class="eyebrow">What's included</span>
-          <h2 id="included-heading">Here's what $59 gets you.</h2>
+        <div class="hero-side">
+          <aside class="included-panel" aria-labelledby="included-heading">
+            <span class="eyebrow">What's included</span>
+            <h2 id="included-heading">Here's what $59 gets you.</h2>
             <ul class="included-list">
               <li>2 hours of Top Golf</li>
               <li>Food and soft drinks included</li>
             </ul>
-          <p class="alcohol-note">Alcohol's on your own.</p>
-        </aside>
+            <p class="alcohol-note">Alcohol's on your own.</p>
+          </aside>
+          <div class="facts">
+            <p class="date-note">
+              <strong>Date</strong>
+              <span>{eventWhen}</span>
+            </p>
+            <a class="date-note" href={eventMapUrl} target="_blank" rel="noopener noreferrer">
+              <strong>Location</strong>
+              <span>{eventWhere}</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -115,6 +117,23 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
 
   .container-narrow {
     max-width: 720px;
+  }
+
+  .hero-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+  }
+
+  .hero-side .facts {
+    margin: 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-side .date-note {
+    width: 100%;
   }
 
   .who {
