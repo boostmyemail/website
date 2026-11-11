@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const checkoutUrl = 'https://link.waveapps.com/n83we7-duhvrn';
 const eventWhen = 'Thursday, December 10, 2026, 6:00 to 8:00 PM';
 const eventWhere = 'Topgolf Salt Lake City';
+const timeNote = "*Time is tentative. Because we're a small group, Topgolf won't let us book until two weeks before the event (only large groups can book earlier). In the event this time is full, I will coordinate with you to figure out a new time.";
 const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920+Jordan+River+Blvd+Midvale+UT+84047';
 ---
 
@@ -46,13 +47,14 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
           <div class="facts">
             <p class="date-note">
               <strong>Date</strong>
-              <span>{eventWhen}</span>
+              <span>{eventWhen}*</span>
             </p>
             <a class="date-note" href={eventMapUrl} target="_blank" rel="noopener noreferrer">
               <strong>Location</strong>
               <span>{eventWhere}</span>
             </a>
           </div>
+          <p class="time-note">{timeNote}</p>
         </div>
       </div>
     </div>
@@ -86,13 +88,14 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
       <div class="facts facts-center">
         <p class="date-note">
           <strong>Date</strong>
-          <span>{eventWhen}</span>
+          <span>{eventWhen}*</span>
         </p>
         <a class="date-note" href={eventMapUrl} target="_blank" rel="noopener noreferrer">
           <strong>Location</strong>
           <span>{eventWhere}</span>
         </a>
       </div>
+      <p class="time-note time-note-center">{timeNote}</p>
       <p class="closing-copy">
         Tickets are $59&nbsp;USD. You pay your own way, or better yet have your business expense it! Checkout runs on Wave, so your card details stay with Wave.
       </p>
@@ -297,6 +300,19 @@ const eventMapUrl = 'https://www.google.com/maps/search/?api=1&query=Topgolf+920
 
   .included-list li::marker {
     color: var(--accent);
+  }
+
+  .time-note {
+    margin: 12px 0 0;
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .facts-center + .time-note-center {
+    max-width: 560px;
+    margin: -8px auto 20px;
+    text-align: center;
   }
 
   .alcohol-note {
