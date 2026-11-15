@@ -1,14 +1,24 @@
 ---
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import SeoHead from '../components/SeoHead.astro';
 import '../styles/global.css';
 
 interface Props {
   title: string;
   description?: string;
+  ogType?: 'website' | 'article';
+  image?: string;
+  jsonLd?: object[];
 }
 
-const { title, description = "Fractional lifecycle marketing for Series A–C SaaS — strategy, execution, and the playbooks to make it repeatable." } = Astro.props;
+const {
+  title,
+  description = "Boost My Email is a fractional lifecycle email marketing service for B2B SaaS and PLG companies, led by Michael Roberts.",
+  ogType,
+  image,
+  jsonLd = [],
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -17,8 +27,7 @@ const { title, description = "Fractional lifecycle marketing for Series A–C Sa
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href={`${import.meta.env.BASE_URL}assets/boostmyemail-logo.png`} />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <SeoHead title={title} description={description} ogType={ogType} image={image} jsonLd={jsonLd} />
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-208CGGPJNF" is:inline></script>
     <script is:inline>

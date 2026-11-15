@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ogType?: 'website' | 'article';
+  image?: string;
+  jsonLd?: object[];
+}
+
+const {
+  title,
+  description,
+  ogType = 'website',
+  // Fallback until a 1200x630 share image exists at /assets/og-default.png.
+  image = '/assets/boostmyemail-logo.png',
+  jsonLd = [],
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const imageUrl = new URL(image, Astro.site).href;
+
+// Escape "<" so a "</script>" inside any field cannot close the tag early.
+const serialize = (obj: object) => JSON.stringify(obj).replace(/</g, '\\u003c');
+---
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content={ogType} />
+<meta property="og:site_name" content="Boost My Email" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={imageUrl} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+{jsonLd.map((obj) => (
+  <script type="application/ld+json" set:html={serialize(obj)} />
+))}
