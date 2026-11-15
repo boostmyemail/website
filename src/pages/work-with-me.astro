@@ -1,10 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Fractional Lifecycle Email',
+  description: 'Senior lifecycle email execution for B2B SaaS and PLG companies. $9,000/month, month-to-month. No long-term commitment.',
+  url: 'https://boostmyemail.com/work-with-me/',
+  provider: { '@id': 'https://boostmyemail.com/#organization' },
+  offers: {
+    '@type': 'Offer',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: 9000,
+      priceCurrency: 'USD',
+      unitCode: 'MON',
+      unitText: 'month',
+    },
+    url: 'https://boostmyemail.com/work-with-me/',
+  },
+};
 ---
 
 <Layout
   title="Work With Me — Boost My Email"
   description="Senior lifecycle email execution for B2B SaaS and PLG companies. $9,000/month, month-to-month. No long-term commitment."
+  jsonLd={[serviceJsonLd]}
 >
 
   <!-- ===== HERO ===== -->

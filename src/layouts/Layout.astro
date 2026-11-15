@@ -19,6 +19,28 @@ const {
   image,
   jsonLd = [],
 } = Astro.props;
+
+// Sitewide entities. Pages add their own objects through the jsonLd prop.
+// sameAs is omitted until the owner supplies real profile URLs.
+const siteJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://boostmyemail.com/#organization',
+    name: 'Boost My Email',
+    url: 'https://boostmyemail.com/',
+    logo: 'https://boostmyemail.com/assets/boostmyemail-logo.png',
+    founder: { '@id': 'https://boostmyemail.com/about/#michael-roberts' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://boostmyemail.com/#website',
+    name: 'Boost My Email',
+    url: 'https://boostmyemail.com/',
+    publisher: { '@id': 'https://boostmyemail.com/#organization' },
+  },
+];
 ---
 
 <!doctype html>
@@ -27,7 +49,7 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href={`${import.meta.env.BASE_URL}assets/boostmyemail-logo.png`} />
-    <SeoHead title={title} description={description} ogType={ogType} image={image} jsonLd={jsonLd} />
+    <SeoHead title={title} description={description} ogType={ogType} image={image} jsonLd={[...siteJsonLd, ...jsonLd]} />
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-208CGGPJNF" is:inline></script>
     <script is:inline>

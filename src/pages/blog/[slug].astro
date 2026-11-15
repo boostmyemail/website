@@ -13,6 +13,27 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const published = post.data.date.toISOString().slice(0, 10);
+
+const blogPostingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  ...(post.data.description && { description: post.data.description }),
+  datePublished: published,
+  dateModified: published,
+  author: {
+    '@type': 'Person',
+    '@id': 'https://boostmyemail.com/about/#michael-roberts',
+    name: 'Michael Roberts',
+    url: 'https://boostmyemail.com/about/',
+  },
+  publisher: { '@id': 'https://boostmyemail.com/#organization' },
+  mainEntityOfPage: canonical,
+  ...(post.data.image && { image: new URL(post.data.image, Astro.site).href }),
+};
+
 function formatDate(date: Date) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 }
@@ -21,6 +42,9 @@ function formatDate(date: Date) {
 <Layout
   title={`${post.data.title} — Lifecycle Operator`}
   description={post.data.description}
+  ogType="article"
+  image={post.data.image}
+  jsonLd={[blogPostingJsonLd]}
 >
   <article class="post">
     <header class="post-header">

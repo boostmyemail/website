@@ -18,6 +18,41 @@ const { Content } = await render(product);
 const isFree = product.data.free;
 const emailFieldName = `${slug.replace(/-/g, '_')}_email`;
 
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+
+// Hourly and monthly prices use a UnitPriceSpecification; unitCode is the
+// UN/CEFACT code (HUR = hour, MON = month).
+const unit = product.data.price_label.includes('/hr')
+  ? { unitCode: 'HUR', unitText: 'hour' }
+  : product.data.price_label.includes('/month')
+    ? { unitCode: 'MON', unitText: 'month' }
+    : null;
+
+const productJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': product.data.category === 'digital' ? 'Product' : 'Service',
+  name: product.data.title,
+  description: product.data.tagline,
+  url: canonical,
+  ...(product.data.category === 'digital'
+    ? { brand: { '@id': 'https://boostmyemail.com/#organization' } }
+    : { provider: { '@id': 'https://boostmyemail.com/#organization' } }),
+  offers: {
+    '@type': 'Offer',
+    ...(unit
+      ? {
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            price: product.data.price,
+            priceCurrency: 'USD',
+            ...unit,
+          },
+        }
+      : { price: product.data.price, priceCurrency: 'USD' }),
+    url: canonical,
+  },
+};
+
 const categoryLabel: Record<string, string> = {
   'done-for-you': 'Done For You',
   'consulting': 'Consulting',
@@ -28,6 +63,7 @@ const categoryLabel: Record<string, string> = {
 <Layout
   title={`${product.data.title} — Boost My Email`}
   description={product.data.tagline}
+  jsonLd={[productJsonLd]}
 >
   <article class="product">
 

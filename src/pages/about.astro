@@ -1,11 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import AllTestimonials from '../components/AllTestimonials.astro';
+
+// sameAs is omitted until the owner supplies real profile URLs.
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': 'https://boostmyemail.com/about/#michael-roberts',
+  name: 'Michael Roberts',
+  url: 'https://boostmyemail.com/about/',
+  image: 'https://boostmyemail.com/assets/michael-roberts.png',
+  jobTitle: 'Fractional Lifecycle Email Marketer',
+  description: 'Fractional lifecycle email marketer for B2B SaaS and PLG companies. 10+ years of hands-on experience.',
+  worksFor: { '@id': 'https://boostmyemail.com/#organization' },
+  knowsAbout: ['Lifecycle email marketing', 'HubSpot', 'Customer.io', 'Email deliverability', 'B2B SaaS marketing'],
+};
 ---
 
 <Layout
   title="About — Boost My Email"
   description="Michael Roberts is a fractional lifecycle email marketer for B2B SaaS and PLG companies. 10+ years of hands-on experience."
+  jsonLd={[personJsonLd]}
 >
 
   <!-- ===== HERO ===== -->
