@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/remote-contractor-holiday-party",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/remote-contractor-holiday-party/",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
